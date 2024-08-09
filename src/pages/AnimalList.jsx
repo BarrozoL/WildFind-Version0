@@ -1,32 +1,20 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function AnimalList() {
   const [animals, setAnimals] = useState([]);
-
-  const ANIMALS_DB = "https://wildfind-backendserver.adaptable.app/animals";
-
-  useEffect(() => {
-    getAllAnimals();
-  }, []);
-
-  const getAllAnimals = async () => {
-    try {
-      const response = await axios.get(ANIMALS_DB);
-      return setAnimals(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
       <div className="animalWrapper">
         {animals.map((animal) => {
           return (
+            /*  <Link to={`${ANIMALS_DB}/${animal.id}`}> */
             <div key={animal.id}>
               <h3>{animal.name}</h3>
             </div>
+            /*    </Link> */
           );
         })}
       </div>
