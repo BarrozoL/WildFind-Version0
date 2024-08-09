@@ -2,18 +2,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const handleAnimalsNavigate = () => {
-    navigate("/animalList");
-  };
-  const handleMapNavigate = () => {
-    navigate("/map");
-  };
 
   return (
     <div>
       <h1>WildFind</h1>
-      <button onClick={handleAnimalsNavigate}>Animals</button>
-      <button onClick={handleMapNavigate}>Map</button>
+      <button onClick={navigate("/animalList")}>See your local animals</button>
+      <button onClick={navigate("/map")}>
+        See a map of local animal sightings
+      </button>
+      <button onClick={navigate("/add")}>
+        Seen an animal? Add a new sighting!
+      </button>
     </div>
   );
 }

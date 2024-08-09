@@ -14,6 +14,8 @@ const Navbar = () => {
         <NavLink to="/animalList">Animals</NavLink>
         <br />
         <NavLink to="/map">Map</NavLink>
+        <br />
+        <NavLink to="/add">Add a Sighting</NavLink>
       </ul>
     </nav>
   );
