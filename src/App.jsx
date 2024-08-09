@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Homepage from "./pages/Homepage";
+import AnimalList from "./pages/AnimalList";
 function App() {
   const [count, setCount] = useState(0);
 
