@@ -40,3 +40,30 @@
 .read-the-docs {
   color: #888;
 }
+
+.navbar {
+  margin: 0;
+  background-color: blueviolet;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  color: white;
+}
+
+.footer {
+  background-color: blueviolet;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 40px;
+  z-index: 1001;
+  left: 0;
+}
+
+.footer a {
+  color: white;
+}
