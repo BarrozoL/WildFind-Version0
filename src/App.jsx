@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
 import AnimalList from "./pages/AnimalList";
+import Errorpage from "./pages/Errorpage";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/animal-list" element={<AnimalList />} />
         <Route path="/animal-list/:id" element={<AnimalDetails />} />
         <Route path="/watch-list" element={<WatchList />} />
+        <Route path="/*" element={<Errorpage />} />
       </Routes>
       <Footer />
     </>
