@@ -5,7 +5,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
 import AnimalList from "./pages/AnimalList";
-import { getAllAnimals, getAnimal } from "../lib";
+
+
+
+import Errorpage from "./pages/Errorpage";
 
 function App() {
   const [animals, setAnimals] = useState([]);
@@ -19,9 +22,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/animal-list" element={<AnimalList animals={animals} />} />
-        {/*  <Route path="/animal-list/:id" element={<AnimalDetails />} />
-        <Route path="/watch-list" element={<WatchList />} /> */}
+
+        <Route path="/animal-list" element={<AnimalList />} />
+        <Route path="/animal-list/:id" element={<AnimalDetails />} />
+        <Route path="/watch-list" element={<WatchList />} />
+        <Route path="/*" element={<Errorpage />} />
       </Routes>
 
       <Footer />
