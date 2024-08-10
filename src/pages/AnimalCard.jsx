@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 export default function AnimalCard() {
   const [animal, setAnimal] = useState();
-  const { animalId } = useParams();
-
-  useEffect(() => {
-    getAnimal(animalId);
-  }, []);
 
   return (
     <>
