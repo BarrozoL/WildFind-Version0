@@ -8,11 +8,12 @@ import AnimalList from "./pages/AnimalList";
 import { getAllAnimals, getAnimal } from "../lib";
 
 function App() {
-  const [animal, setAnimals] = useState([]);
+  const [animals, setAnimals] = useState([]);
 
   useEffect(() => {
     getAllAnimals().then((data) => setAnimals(data));
   }, []);
+
   return (
     <>
       {/* <Navbar />
@@ -23,7 +24,7 @@ function App() {
         <Route path="/watch-list" element={<WatchList />} />
       </Routes>
       <Footer /> */}
-      <AnimalList />
+      <AnimalList animals={animals} />
     </>
   );
 }
