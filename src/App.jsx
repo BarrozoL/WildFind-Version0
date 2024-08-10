@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -15,17 +15,17 @@ function App() {
   }, []);
 
   return (
-    <>
-      {/* <Navbar />
+    <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/animal-list" element={<AnimalList />} />
-        <Route path="/animal-list/:id" element={<AnimalDetails />} />
-        <Route path="/watch-list" element={<WatchList />} />
+        <Route path="/animal-list" element={<AnimalList animals={animals} />} />
+        {/*  <Route path="/animal-list/:id" element={<AnimalDetails />} />
+        <Route path="/watch-list" element={<WatchList />} /> */}
       </Routes>
-      <Footer /> */}
-      <AnimalList animals={animals} />
-    </>
+
+      <Footer />
+    </Router>
   );
 }
 export default App;
