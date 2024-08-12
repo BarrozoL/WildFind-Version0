@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 import { getAnimal } from "../../lib";
 
 export default function AnimalCard() {
-  const [foundAnimal, setFoundAnimal] = useState(null);
+  const [foundAnimal, setFoundAnimal] = useState();
+  const { animalId } = useParams();
 
   useEffect(() => {
-    getAnimal().then((data) => setFoundAnimal(data));
+    getAnimal(animalId).then((data) => setFoundAnimal(data));
   }, []);
+
+  if (!foundAnimal) return <p>Loading...</p>;
 
   return (
     <>
