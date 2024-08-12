@@ -8,8 +8,8 @@ function WatchCard({ watch, deleteWatch }) {
         <p>{watch.description}</p>
         <p>{watch.location}</p>
       </Link>
-      <Link className="editWatch-btn" to={`/watch/${watch.id}/editWatch`}>
-        O
+      <Link className="editWatch-btn" to={`/watch/${watch.id}/edit-watch`}>
+        Edit
       </Link>
       <button onClick={() => deleteWatch(watch.id)}>X</button>
     </li>
