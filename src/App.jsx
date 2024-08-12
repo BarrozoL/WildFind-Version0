@@ -11,6 +11,7 @@ import AnimalList from "./pages/AnimalList";
 import Errorpage from "./pages/Errorpage";
 import AnimalCard from "./pages/AnimalCard";
 import WatchList from "./pages/WatchList";
+import Sightings from "./pages/Sightings";
 
 //components
 import WatchCard from "./components/WatchCard";
@@ -73,6 +74,12 @@ function App() {
         />
 
         <Route path="/watch/:watchId" element={<WatchCard />} />
+
+        <Route
+          path={`/animal-list/:animalId/:sightings`}
+          element={<Sightings />}
+        />
+
         <Route path="/*" element={<Errorpage />} />
       </Routes>
 
