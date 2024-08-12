@@ -19,6 +19,7 @@ export default function AnimalList({ animals }) {
 
   return (
     <>
+
       <input
         className="search-bar"
         type="text"
@@ -26,6 +27,7 @@ export default function AnimalList({ animals }) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button onClick={handleNavigate}>Add a new Animal!</button>
+
       <div className="animalWrapper">
         {filteredAnimals.map((animal) => {
           return (

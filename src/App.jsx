@@ -12,6 +12,7 @@ import AnimalCard from "./pages/AnimalCard";
 import WatchList from "./pages/WatchList";
 import Sightings from "./pages/Sightings";
 import WatchDetails from "./pages/WatchDetails";
+
 import AddSighting from "./pages/AddSighting";
 import EditWatchPage from "./pages/EditWatch";
 import AddAnimal from "./pages/AddAnimal";
@@ -40,7 +41,6 @@ function App() {
   }, []);
 
   // Get all animals that exist in DB
-
   useEffect(() => {
     getAllAnimals()
       .then((data) => {
@@ -51,10 +51,13 @@ function App() {
   }, []);
 
   // Add a new animal
+
   const newAnimal = (animal) => {
     addAnimal(animal).then((newAnimal) => setAnimals([...animals, newAnimal]));
   };
   // Get all watching animals
+
+
 
   useEffect(() => {
     getAllWatches()
@@ -65,7 +68,8 @@ function App() {
       .catch((error) => console.error("Error fetching watches:", error));
   }, []);
 
-  //delete watching animal
+
+  // Delete watching animal
   const deleteWatch = (id) => {
     deleteWatchItem(id)
       .then(() => {
@@ -74,7 +78,8 @@ function App() {
       .catch((error) => console.error("Error deleting watch:", error));
   };
 
-  //edit watch animal
+
+  // Edit watch animal
   const editWatch = (watchItem) => {
     updateWatch(watchItem)
       .then((data) => {
@@ -91,6 +96,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
+        <Route
+          path="/animal-add"
+          element={<AddAnimal types={types} addAnimal={addAnimal} />}
+        />
+        <Route
+          path="/add-sighting"
+          element={<AddSighting animals={animals} />}
+        />
         <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
 
         <Route
