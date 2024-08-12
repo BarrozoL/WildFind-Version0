@@ -20,7 +20,7 @@ const Navbar = () => {
 
           <NavLink to="/add">Add a Sighting</NavLink>
 
-          <NavLink to="/watch-list">View your Watchlist</NavLink>
+          <NavLink to="/watch">View your Watchlist</NavLink>
         </ul>
       </nav>
     </div>

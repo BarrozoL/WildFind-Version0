@@ -12,6 +12,9 @@ import Errorpage from "./pages/Errorpage";
 import AnimalCard from "./pages/AnimalCard";
 import WatchList from "./pages/WatchList";
 
+//components
+import WatchCard from "./components/WatchCard";
+
 //Functions
 import {
   getAllAnimals,
@@ -57,16 +60,18 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
         <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
-        {/*   <Route path="/watch-list" element={<WatchList />} /> */}
+        {/*   <Route path="/watch" element={<WatchList />} /> */}
 
         <Route
-          path="/watch-list"
+          path="/watch"
           element={<WatchList watches={watches} deleteWatch={deleteWatch} />}
         />
         <Route
-          path="/watch-list/:watchId/editWatch"
+          path="/watch/:watchId/edit-watch"
           element={<EditWatchPage editWatch={editWatch} watches={watches} />}
         />
+
+        <Route path="/watch/:watchId" element={<WatchCard />} />
         <Route path="/*" element={<Errorpage />} />
       </Routes>
 
