@@ -19,7 +19,6 @@ export default function AnimalList({ animals }) {
 
   return (
     <>
-
       <input
         className="search-bar"
         type="text"
@@ -33,7 +32,7 @@ export default function AnimalList({ animals }) {
           return (
             <Link to={`/animal-list/${animal.id}`} key={animal.id}>
               <div style={{ margin: "30px", border: "2px solid black" }}>
-                <h3 style={{ color: "white" }}>{animal.name}</h3>
+                <h3 style={{ color: "rgb(44,140,121)" }}>{animal.name}</h3>
                 <img width="80px" src={animal.image} />
               </div>
             </Link>

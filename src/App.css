@@ -42,7 +42,7 @@
 }
 
 .footer {
-  background-color: blueviolet;
+  background-color: rgba(116, 172, 0, 255);
   margin: 0;
   padding: 0;
   position: fixed;
@@ -63,4 +63,8 @@
   right: 6vw;
   height: 20px;
   font-size: 16px;
+}
+
+body {
+  background-color: rgba(234, 243, 216, 255);
 }
