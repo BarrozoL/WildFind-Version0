@@ -33,8 +33,8 @@ export default function WatchList() {
   return (
     <>
       <div className="watchWrapper">
-        <Link to="/watch/create">
-          <button>Create a new Watch item</button>
+        <Link to="/animal-list">
+          <button>View Full List of Animals</button>
         </Link>
         {watches.map((watch) => (
           <WatchCard key={watch.id} watch={watch} deleteWatch={deleteWatch} />
