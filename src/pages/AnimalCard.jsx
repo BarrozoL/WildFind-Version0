@@ -28,10 +28,12 @@ export default function AnimalCard() {
       const response = await addToWatchList(
         animalId,
         foundAnimal.name,
+        foundAnimal.image,
         foundAnimal.description,
         `Native to ${foundAnimal.location}`
       );
       handleWatchNavigate();
+      location.reload(); //do something about this... maybe useState and spread
       console.log("animal added to watch list", response);
     } catch (error) {
       console.log(error, "can't add to watch list");
@@ -45,6 +47,7 @@ export default function AnimalCard() {
       <div className="animalDetailWrapper">
         <div key={foundAnimal.id}></div>
         <p>{foundAnimal.name}</p>
+        <img src={foundAnimal.image} alt={foundAnimal.name} width="300px" />
         <p>{foundAnimal.description}</p>
         <p>Native to {foundAnimal.location}</p>
         <button onClick={handleNavigate}>Back</button>

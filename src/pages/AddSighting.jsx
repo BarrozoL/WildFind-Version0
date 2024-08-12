@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function AddSpottedAnimal() {
+export default function AddSpottedAnimal({ animals }) {
+  console.log(animals);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [locaiton, setLocation] = useState("");
+  const [location, setLocation] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,14 +24,19 @@ export default function AddSpottedAnimal() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !description || !locaiton) {
+    if (!name || !description || !location) {
       alert("All fields are mandatory");
+    }
+
+    for (let i = i; i < animals.length; i++) {
+      if (animals[i].name == name) {
+      }
     }
 
     const newSpotting = {
       name,
       description,
-      locaiton,
+      location,
     };
 
     /* METHOD FOR ADDING SPOTTED ANIMAL WITH API */
@@ -47,7 +53,7 @@ export default function AddSpottedAnimal() {
       <h1>What and where did you spot?</h1>
       <form>
         <div>
-          <label>Name:</label>
+          <label>Animal name:</label>
           <input
             type="text"
             name="name"
