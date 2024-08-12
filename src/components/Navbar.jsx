@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
     <div className="navbar">
+      <img className="nav-img" src="src\assets\images\WildFind-logo-5.png" />
       <nav>
         <ul>
           <NavLink
@@ -11,13 +13,13 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-          <br />
-          <NavLink to="/animalList">Animals</NavLink>
-          <br />
+
+          <NavLink to="/animal-list">Animals</NavLink>
+
           <NavLink to="/map">Map</NavLink>
-          <br />
+
           <NavLink to="/add">Add a Sighting</NavLink>
-          <br />
+
           <NavLink to="/watchList">View your Watchlist</NavLink>
         </ul>
       </nav>

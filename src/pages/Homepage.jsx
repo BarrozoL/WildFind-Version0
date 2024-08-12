@@ -6,11 +6,13 @@ export default function HomePage() {
   return (
     <div>
       <h1>WildFind</h1>
-      <button onClick={navigate("/animalList")}>See your local animals</button>
-      <button onClick={navigate("/map")}>
+      <button /* onClick={navigate("/animalList")} */>
+        See your local animals
+      </button>
+      <button /* onClick={navigate("/map")} */>
         See a map of local animal sightings
       </button>
-      <button onClick={navigate("/add")}>
+      <button /* onClick={navigate("/add")} */>
         Seen an animal? Add a new sighting!
       </button>
     </div>

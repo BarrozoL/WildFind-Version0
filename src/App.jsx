@@ -16,6 +16,7 @@ import WatchList from "./pages/WatchList";
 import { getAllAnimals, getAnimal } from "../lib";
 import EditWatchPage from "./pages/EditWatch";
 
+
 function App() {
   const [animals, setAnimals] = useState([]);
   /*   const { animalId } = useParams(); */
@@ -36,9 +37,11 @@ function App() {
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
         {/*  <Route path="/animal-list/:id" element={<AnimalCard />} /> */}
         {/*   <Route path="/watch-list" element={<WatchList />} /> */}
+
         <Route path="/watch" element={<WatchList />} />
         <Route path="watch/:watchId/editWatch" element={<EditWatchPage />} />
-        <Route path="/*" element={<Error />} />
+          <Route path="/*" element={Errorpage />} />
+
       </Routes>
 
       <Footer />
