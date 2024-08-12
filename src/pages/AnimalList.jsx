@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 export default function AnimalList({ animals }) {
   return (
     <>
+      <div>
+        <button>Add new animal</button>
+      </div>
       <div className="animalWrapper">
         {animals.map((animal) => {
           return (
