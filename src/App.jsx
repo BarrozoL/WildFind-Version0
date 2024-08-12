@@ -18,15 +18,10 @@ import EditWatchPage from "./pages/EditWatch";
 
 function App() {
   const [animals, setAnimals] = useState([]);
-  /*   const [animal, setAnimal] = useState(); */
 
   useEffect(() => {
     getAllAnimals().then((data) => setAnimals(data));
   }, []);
-
-  /*   useEffect(() => {
-    getAnimal(animalId);
-  }, []); */
 
   return (
     <Router>

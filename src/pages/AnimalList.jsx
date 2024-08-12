@@ -1,4 +1,3 @@
-const ANIMALS_DB = "https://wildfind-backendserver.adaptable.app/animals";
 import { Link } from "react-router-dom";
 
 //Receive the {animals} as a prop from the App, since the state stored and altered there.
