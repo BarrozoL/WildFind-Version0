@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addAnimal } from "../../lib";
 
-export default function AddAnimal({ AddAnimal }) {
+export default function AddAnimal({ types, addAnimal }) {
   console.log(addAnimal);
   const [selectedAnimalType, setSelectedAnimalType] = useState("-");
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
 
@@ -17,6 +18,10 @@ export default function AddAnimal({ AddAnimal }) {
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
   };
 
   const handleDescriptionChange = (e) => {
@@ -34,7 +39,7 @@ export default function AddAnimal({ AddAnimal }) {
       alert("All fields are mandatory");
     }
 
-    const animalTypeId = 0;
+    let animalTypeId = 0;
 
     for (let i = 0; i < types.length; i++) {
       if (types[i].name === selectedAnimalType) {
@@ -64,12 +69,12 @@ export default function AddAnimal({ AddAnimal }) {
       <h1>What and where did you spot?</h1>
       <form>
         <div>
-          <label for="animalType">Animal type:</label>
+          <label>Animal type:</label>
           <select
             name="animalType"
             id="animalType"
             onChange={handleSelectedAnimalType}
-            value={animalType}
+            value={selectedAnimalType}
           >
             <option value="bird">Bird</option>
             <option value="mammal">Mammal</option>
@@ -84,6 +89,15 @@ export default function AddAnimal({ AddAnimal }) {
             name="name"
             value={name}
             onChange={handleNameChange}
+          />
+        </div>
+        <div>
+          <label>Image URL:</label>
+          <input
+            type="text"
+            name="image"
+            value={image}
+            onChange={handleImageChange}
           />
         </div>
         <div>

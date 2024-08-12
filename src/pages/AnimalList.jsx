@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Receive the {animals} as a prop from the App, since the state stored and altered there.
 export default function AnimalList({ animals }) {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/animal-add");
+  };
 
   const filteredAnimals =
     search.length === 0
@@ -20,6 +25,7 @@ export default function AnimalList({ animals }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <button onClick={handleNavigate}>Add a new Animal!</button>
       <div className="animalWrapper">
         {filteredAnimals.map((animal) => {
           return (

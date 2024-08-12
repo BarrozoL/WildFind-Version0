@@ -51,7 +51,7 @@ function App() {
   }, []);
 
   // Add a new animal
-  const addAnimal = (animal) => {
+  const newAnimal = (animal) => {
     addAnimal(animal).then((newAnimal) => setAnimals([...animals, newAnimal]));
   };
   // Get all watching animals
@@ -111,7 +111,7 @@ function App() {
 
         <Route
           path="/animal-add"
-          element={<AddAnimal types={types} addAnimal={addAnimal} />}
+          element={<AddAnimal types={types} addAnimal={newAnimal} />}
         />
         <Route
           path="/add-sighting"
