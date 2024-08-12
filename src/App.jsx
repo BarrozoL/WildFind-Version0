@@ -1,58 +1,94 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-//Pages
+// Pages
 import Homepage from "./pages/Homepage";
 import AnimalList from "./pages/AnimalList";
 import Errorpage from "./pages/Errorpage";
 import AnimalCard from "./pages/AnimalCard";
 import WatchList from "./pages/WatchList";
+import Sightings from "./pages/Sightings";
+import WatchDetails from "./pages/WatchDetails";
 
-//components
+import AddSighting from "./pages/AddSighting";
+import EditWatchPage from "./pages/EditWatch";
+import AddAnimal from "./pages/AddAnimal";
+
+// Components
 import WatchCard from "./components/WatchCard";
 
-//Functions
+// Functions
 import {
   getAllAnimals,
   getAllWatches,
   deleteWatchItem,
   updateWatch,
+  getTypes,
+  addAnimal,
 } from "../lib";
-import EditWatchPage from "./pages/EditWatch";
 
 function App() {
+  const [types, setTypes] = useState([]);
   const [animals, setAnimals] = useState([]);
-
-  /*   const [animal, setAnimal] = useState(); */
   const [watches, setWatches] = useState([]);
 
+  // Get the existing types of animals
   useEffect(() => {
-    getAllAnimals().then((data) => setAnimals(data));
+    getTypes().then((data) => setTypes(data));
   }, []);
 
+  // Get all animals that exist in DB
   useEffect(() => {
-    getAllWatches().then((data) => setWatches(data));
+    getAllAnimals()
+      .then((data) => {
+        console.log("Fetched animals:", data);
+        setAnimals(data);
+      })
+      .catch((error) => console.error("Error fetching animals:", error));
   }, []);
 
+  // Add a new animal
+
+  const newAnimal = (animal) => {
+    addAnimal(animal).then((newAnimal) => setAnimals([...animals, newAnimal]));
+  };
+  // Get all watching animals
+
+
+
+  useEffect(() => {
+    getAllWatches()
+      .then((data) => {
+        console.log("Fetched watches:", data);
+        setWatches(data);
+      })
+      .catch((error) => console.error("Error fetching watches:", error));
+  }, []);
+
+
+  // Delete watching animal
   const deleteWatch = (id) => {
-    deleteWatchItem(id).then((data) =>
-      setWatches(watches.filter((watch) => watch.id !== id))
-    );
+    deleteWatchItem(id)
+      .then(() => {
+        setWatches(watches.filter((watch) => watch.id !== id));
+      })
+      .catch((error) => console.error("Error deleting watch:", error));
   };
 
+
+  // Edit watch animal
   const editWatch = (watchItem) => {
-    updateWatch(watchItem).then((data) =>
-      setWatches(watches.map((watch) => (data.id === watch.id ? data : watch)))
-    );
+    updateWatch(watchItem)
+      .then((data) => {
+        setWatches(
+          watches.map((watch) => (data.id === watch.id ? data : watch))
+        );
+      })
+      .catch((error) => console.error("Error updating watch:", error));
   };
-
-  /*   useEffect(() => {
-    getAnimal(animalId);
-  }, []); */
 
   return (
     <Router>
@@ -60,8 +96,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
+        <Route
+          path="/animal-add"
+          element={<AddAnimal types={types} addAnimal={addAnimal} />}
+        />
+        <Route
+          path="/add-sighting"
+          element={<AddSighting animals={animals} />}
+        />
         <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
-        {/*   <Route path="/watch" element={<WatchList />} /> */}
 
         <Route
           path="/watch"
@@ -72,7 +115,22 @@ function App() {
           element={<EditWatchPage editWatch={editWatch} watches={watches} />}
         />
 
-        <Route path="/watch/:watchId" element={<WatchCard />} />
+        <Route path="/watch/:watchId/details" element={<WatchDetails />} />
+
+        <Route
+          path={`/animal-list/:animalId/sightings`}
+          element={<Sightings />}
+        />
+
+        <Route
+          path="/animal-add"
+          element={<AddAnimal types={types} addAnimal={newAnimal} />}
+        />
+        <Route
+          path="/add-sighting"
+          element={<AddSighting animals={animals} />}
+        />
+
         <Route path="/*" element={<Errorpage />} />
       </Routes>
 
@@ -80,4 +138,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
