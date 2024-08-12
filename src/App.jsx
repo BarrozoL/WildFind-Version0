@@ -13,16 +13,38 @@ import AnimalCard from "./pages/AnimalCard";
 import WatchList from "./pages/WatchList";
 
 //Functions
-import { getAllAnimals } from "../lib";
+import {
+  getAllAnimals,
+  getAllWatches,
+  deleteWatchItem,
+  updateWatch,
+} from "../lib";
 import EditWatchPage from "./pages/EditWatch";
 
 function App() {
   const [animals, setAnimals] = useState([]);
   /*   const [animal, setAnimal] = useState(); */
+  const [watches, setWatches] = useState([]);
 
   useEffect(() => {
     getAllAnimals().then((data) => setAnimals(data));
   }, []);
+
+  useEffect(() => {
+    getAllWatches().then((data) => setWatches(data));
+  }, []);
+
+  const deleteWatch = (id) => {
+    deleteWatchItem(id).then((data) =>
+      setWatches(watches.filter((watch) => watch.id !== id))
+    );
+  };
+
+  const editWatch = (watchItem) => {
+    updateWatch(watchItem).then((data) =>
+      setWatches(watches.map((watch) => (data.id === watch.id ? data : watch)))
+    );
+  };
 
   /*   useEffect(() => {
     getAnimal(animalId);
@@ -37,10 +59,13 @@ function App() {
         <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
         {/*   <Route path="/watch-list" element={<WatchList />} /> */}
 
-        <Route path="/watch-list" element={<WatchList />} />
         <Route
-          path="watch-list/:watchId/editWatch"
-          element={<EditWatchPage />}
+          path="/watch-list"
+          element={<WatchList watches={watches} deleteWatch={deleteWatch} />}
+        />
+        <Route
+          path="/watch-list/:watchId/editWatch"
+          element={<EditWatchPage editWatch={editWatch} watches={watches} />}
         />
         <Route path="/*" element={<Errorpage />} />
       </Routes>
