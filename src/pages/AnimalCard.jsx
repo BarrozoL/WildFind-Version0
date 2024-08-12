@@ -46,7 +46,7 @@ export default function AnimalCard() {
     <>
       <div className="animalDetailWrapper">
         <div key={foundAnimal.id}></div>
-        <p>{foundAnimal.name}</p>
+        <h3>{foundAnimal.name}</h3>
         <img src={foundAnimal.image} alt={foundAnimal.name} width="300px" />
         <p>{foundAnimal.description}</p>
         <p>Native to {foundAnimal.location}</p>

@@ -68,3 +68,7 @@
 body {
   background-color: rgba(234, 243, 216, 255);
 }
+
+* {
+  color: rgb(44, 140, 121);
+}
