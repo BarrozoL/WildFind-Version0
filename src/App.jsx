@@ -18,7 +18,8 @@ import EditWatchPage from "./pages/EditWatch";
 
 function App() {
   const [animals, setAnimals] = useState([]);
-  /*   const { animalId } = useParams(); */
+  const [animal, setAnimal] = useState();
+  const { animalId } = useParams();
 
   useEffect(() => {
     getAllAnimals().then((data) => setAnimals(data));
@@ -34,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
-        {/*  <Route path="/animal-list/:id" element={<AnimalCard />} /> */}
+        <Route path={`/animal-list/${animalId}`} element={<AnimalCard />} />
         {/*   <Route path="/watch-list" element={<WatchList />} /> */}
 
         <Route path="/watch-list" element={<WatchList />} />

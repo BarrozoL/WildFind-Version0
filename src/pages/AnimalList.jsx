@@ -8,7 +8,7 @@ export default function AnimalList({ animals }) {
       <div className="animalWrapper">
         {animals.map((animal) => {
           return (
-            <Link to={`${ANIMALS_DB}/${animal.id}`}>
+            <Link to={`/animal-list/${animal.id}`}>
               <div key={animal.id}>
                 <p></p>
                 <h3>{animal.name}</h3>
