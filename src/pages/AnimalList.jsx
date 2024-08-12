@@ -1,19 +1,40 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 //Receive the {animals} as a prop from the App, since the state stored and altered there.
 export default function AnimalList({ animals }) {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/animal-add");
+  };
+
+  const filteredAnimals =
+    search.length === 0
+      ? animals
+      : animals.filter((animal) =>
+          animal.name.toLowerCase().includes(search.toLowerCase())
+        );
+
   return (
     <>
-      <div>
-        <button>Add new animal</button>
-      </div>
+
+      <input
+        className="search-bar"
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button onClick={handleNavigate}>Add a new Animal!</button>
+
       <div className="animalWrapper">
-        {animals.map((animal) => {
+        {filteredAnimals.map((animal) => {
           return (
-            <Link to={`/animal-list/${animal.id}`}>
-              <div key={animal.id}>
-                <p></p>
-                <h3>{animal.name}</h3>
+            <Link to={`/animal-list/${animal.id}`} key={animal.id}>
+              <div style={{ margin: "30px", border: "2px solid black" }}>
+                <h3 style={{ color: "white" }}>{animal.name}</h3>
+                <img width="80px" src={animal.image} />
               </div>
             </Link>
           );
