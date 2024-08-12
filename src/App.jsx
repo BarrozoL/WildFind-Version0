@@ -10,9 +10,12 @@ import Homepage from "./pages/Homepage";
 import AnimalList from "./pages/AnimalList";
 import Error from "./pages/Errorpage";
 import AnimalCard from "./pages/AnimalCard";
+import WatchList from "./pages/WatchList";
 
 //Functions
 import { getAllAnimals, getAnimal } from "../lib";
+import EditWatchPage from "./pages/EditWatch";
+
 
 function App() {
   const [animals, setAnimals] = useState([]);
@@ -34,7 +37,11 @@ function App() {
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
         {/*  <Route path="/animal-list/:id" element={<AnimalCard />} /> */}
         {/*   <Route path="/watch-list" element={<WatchList />} /> */}
-        <Route path="/*" element={<Error />} />
+
+        <Route path="/watch" element={<WatchList />} />
+        <Route path="watch/:watchId/editWatch" element={<EditWatchPage />} />
+          <Route path="/*" element={Errorpage />} />
+
       </Routes>
 
       <Footer />
