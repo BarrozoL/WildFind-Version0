@@ -28,13 +28,15 @@ import {
   updateWatch,
   getTypes,
   addAnimal,
+  addSighting,
+  getSightings,
 } from "../lib";
 
 function App() {
   const [types, setTypes] = useState([]);
   const [animals, setAnimals] = useState([]);
   const [watches, setWatches] = useState([]);
-
+  const [sightings, setSightings] = useState([]);
   // Get the existing types of animals
   useEffect(() => {
     getTypes().then((data) => setTypes(data));
@@ -57,8 +59,6 @@ function App() {
   };
   // Get all watching animals
 
-
-
   useEffect(() => {
     getAllWatches()
       .then((data) => {
@@ -67,7 +67,6 @@ function App() {
       })
       .catch((error) => console.error("Error fetching watches:", error));
   }, []);
-
 
   // Delete watching animal
   const deleteWatch = (id) => {
@@ -78,7 +77,6 @@ function App() {
       .catch((error) => console.error("Error deleting watch:", error));
   };
 
-
   // Edit watch animal
   const editWatch = (watchItem) => {
     updateWatch(watchItem)
@@ -88,6 +86,18 @@ function App() {
         );
       })
       .catch((error) => console.error("Error updating watch:", error));
+  };
+
+  // Get all sightings
+  useEffect(() => {
+    getSightings().then((data) => setSightings(data));
+  }, []);
+
+  // Add sighting
+  const newSighting = (sighting) => {
+    addSighting(sighting).then((newSight) =>
+      setSightings([...sightings, newSight])
+    );
   };
 
   return (
@@ -101,8 +111,8 @@ function App() {
           element={<AddAnimal types={types} addAnimal={addAnimal} />}
         />
         <Route
-          path="/add-sighting"
-          element={<AddSighting animals={animals} />}
+          path="/:animalId/add-sighting"
+          element={<AddSighting animals={animals} addSighting={newSighting} />}
         />
         <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
 
@@ -125,10 +135,6 @@ function App() {
         <Route
           path="/animal-add"
           element={<AddAnimal types={types} addAnimal={newAnimal} />}
-        />
-        <Route
-          path="/add-sighting"
-          element={<AddSighting animals={animals} />}
         />
 
         <Route path="/*" element={<Errorpage />} />
