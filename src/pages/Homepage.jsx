@@ -4,7 +4,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   const handleAddNavigate = () => {
-    navigate("/add-sighting");
+    navigate("/animal-add");
   };
 
   const handleMapNavigate = () => {

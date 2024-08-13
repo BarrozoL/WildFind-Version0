@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addAnimal } from "../../lib";
 
-
-export default function AddAnimal({ types, addAnimal }) {
+export default function AddAnimal({ types, addAnimal, animals }) {
   console.log(addAnimal);
   const [selectedAnimalType, setSelectedAnimalType] = useState("-");
   const [name, setName] = useState("");
@@ -14,6 +13,8 @@ export default function AddAnimal({ types, addAnimal }) {
 
   const navigate = useNavigate();
 
+  const handleSightingNav = navigate("/add-sighting");
+
   const handleSelectedAnimalType = (e) => {
     setSelectedAnimalType(e.target.value);
   };
@@ -22,11 +23,9 @@ export default function AddAnimal({ types, addAnimal }) {
     setName(e.target.value);
   };
 
-
   const handleImageChange = (e) => {
     setImage(e.target.value);
   };
-
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -36,16 +35,29 @@ export default function AddAnimal({ types, addAnimal }) {
     setLocation(e.target.value);
   };
 
+  const animalExists = (animal) => {
+    animals.includes(
+      (prevAnimal) =>
+        prevAnimal.name.toLowerCase() === animal.name.toLowerCase()
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!name || !description || !location) {
       alert("All fields are mandatory");
+      return;
     }
 
+    if (animalExists) {
+      alert(
+        "This animal has already been spotted! Please add a new sighting instead"
+      );
+      return;
+    }
 
     let animalTypeId = 0;
-
 
     for (let i = 0; i < types.length; i++) {
       if (types[i].name === selectedAnimalType) {
@@ -75,16 +87,13 @@ export default function AddAnimal({ types, addAnimal }) {
       <h1>What and where did you spot?</h1>
       <form>
         <div>
-
           <label>Animal type:</label>
 
           <select
             name="animalType"
             id="animalType"
             onChange={handleSelectedAnimalType}
-
             value={selectedAnimalType}
-
           >
             <option value="bird">Bird</option>
             <option value="mammal">Mammal</option>
@@ -102,7 +111,6 @@ export default function AddAnimal({ types, addAnimal }) {
           />
         </div>
         <div>
-
           <label>Image URL:</label>
           <input
             type="text"
@@ -112,7 +120,6 @@ export default function AddAnimal({ types, addAnimal }) {
           />
         </div>
         <div>
-
           <label>Description:</label>
           <input
             type="text"
@@ -132,6 +139,9 @@ export default function AddAnimal({ types, addAnimal }) {
         </div>
         <button type="submit" onClick={handleSubmit}>
           Submit
+        </button>
+        <button onClick={handleSightingNav}>
+          Add a Sighting of an existing animal
         </button>
       </form>
     </div>

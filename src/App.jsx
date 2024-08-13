@@ -55,9 +55,8 @@ function App() {
   const newAnimal = (animal) => {
     addAnimal(animal).then((newAnimal) => setAnimals([...animals, newAnimal]));
   };
+
   // Get all watching animals
-
-
 
   useEffect(() => {
     getAllWatches()
@@ -68,7 +67,6 @@ function App() {
       .catch((error) => console.error("Error fetching watches:", error));
   }, []);
 
-
   // Delete watching animal
   const deleteWatch = (id) => {
     deleteWatchItem(id)
@@ -77,7 +75,6 @@ function App() {
       })
       .catch((error) => console.error("Error deleting watch:", error));
   };
-
 
   // Edit watch animal
   const editWatch = (watchItem) => {
@@ -124,7 +121,9 @@ function App() {
 
         <Route
           path="/animal-add"
-          element={<AddAnimal types={types} addAnimal={newAnimal} />}
+          element={
+            <AddAnimal types={types} addAnimal={newAnimal} animals={animals} />
+          }
         />
         <Route
           path="/add-sighting"

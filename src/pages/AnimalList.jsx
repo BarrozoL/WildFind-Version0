@@ -4,18 +4,32 @@ import { Link, useNavigate } from "react-router-dom";
 //Receive the {animals} as a prop from the App, since the state stored and altered there.
 export default function AnimalList({ animals }) {
   const [search, setSearch] = useState("");
+  const [type, setType] = useState("");
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate("/animal-add");
   };
 
-  const filteredAnimals =
-    search.length === 0
-      ? animals
-      : animals.filter((animal) =>
-          animal.name.toLowerCase().includes(search.toLowerCase())
-        );
+  const handleTypeFilter = (e) => {
+    setType(e.target.value);
+  };
+
+  let filteredAnimals = animals.filter((animal) => {
+    // Filter by type
+    const typeMatch =
+      !type ||
+      (type === "Birds" && animal.typeId === 1) ||
+      (type === "Mammals" && animal.typeId === 2) ||
+      (type === "Reptiles" && animal.typeId === 3) ||
+      (type === "Other" && animal.typeId === 4);
+
+    // Filter by name
+    const nameMatch = animal.name.toLowerCase().includes(search.toLowerCase());
+
+    // Return only animals that match both filters
+    return typeMatch && nameMatch;
+  });
 
   return (
     <>
@@ -25,6 +39,16 @@ export default function AnimalList({ animals }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <div className="type-select-wrapper">
+        <select className="type-select" onChange={handleTypeFilter}>
+          <option value="">Show All Animals</option>
+          <option value="Birds">Show Birds</option>
+          <option value="Mammals">Show Mammals</option>
+          <option value="Reptiles">Show Reptiles</option>
+          <option value="Other">Show Other Animals</option>
+        </select>
+      </div>
+
       <button onClick={handleNavigate}>Add a new Animal!</button>
 
       <div className="animalWrapper">
