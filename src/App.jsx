@@ -16,6 +16,7 @@ import WatchDetails from "./pages/WatchDetails";
 import AddSighting from "./pages/AddSighting";
 import EditWatchPage from "./pages/EditWatch";
 import AddAnimal from "./pages/AddAnimal";
+import Map from "./pages/Map";
 
 // Components
 import WatchCard from "./components/WatchCard";
@@ -37,6 +38,7 @@ function App() {
   const [animals, setAnimals] = useState([]);
   const [watches, setWatches] = useState([]);
   const [sightings, setSightings] = useState([""]);
+
   // Get the existing types of animals
   useEffect(() => {
     getTypes().then((data) => setTypes(data));
@@ -119,6 +121,7 @@ function App() {
           path="/watch"
           element={<WatchList watches={watches} deleteWatch={deleteWatch} />}
         />
+
         <Route
           path="/watch/:watchId/edit-watch"
           element={<EditWatchPage editWatch={editWatch} watches={watches} />}
@@ -129,6 +132,11 @@ function App() {
         <Route
           path={`/animal-list/:animalId/sightings`}
           element={<Sightings sightings={sightings} />}
+        />
+
+        <Route
+          path={"/map"}
+          element={<Map animals={animals} sightings={sightings} />}
         />
 
         <Route

@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getAnimal } from "../../lib";
 
 export default function Sightings({ sightings }) {
-  /*  const [foundAnimal, setFoundAnimal] = useState(); */
   const { animalId } = useParams();
   const navigate = useNavigate();
 
