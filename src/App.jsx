@@ -36,7 +36,7 @@ function App() {
   const [types, setTypes] = useState([]);
   const [animals, setAnimals] = useState([]);
   const [watches, setWatches] = useState([]);
-  const [sightings, setSightings] = useState([]);
+  const [sightings, setSightings] = useState([""]);
   // Get the existing types of animals
   useEffect(() => {
     getTypes().then((data) => setTypes(data));
@@ -129,7 +129,7 @@ function App() {
 
         <Route
           path={`/animal-list/:animalId/sightings`}
-          element={<Sightings />}
+          element={<Sightings sightings={sightings} />}
         />
 
         <Route
