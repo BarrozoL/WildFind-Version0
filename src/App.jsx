@@ -46,7 +46,6 @@ function App() {
   useEffect(() => {
     getAllAnimals()
       .then((data) => {
-        console.log("Fetched animals:", data);
         setAnimals(data);
       })
       .catch((error) => console.error("Error fetching animals:", error));
@@ -63,7 +62,6 @@ function App() {
   useEffect(() => {
     getAllWatches()
       .then((data) => {
-        console.log("Fetched watches:", data);
         setWatches(data);
       })
       .catch((error) => console.error("Error fetching watches:", error));
