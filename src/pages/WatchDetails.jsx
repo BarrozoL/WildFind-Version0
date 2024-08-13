@@ -29,12 +29,7 @@ function WatchDetails() {
   return (
     <div className="watchDetailWrapper">
       <div key={foundWatch.id}>
-        <img
-          src={foundWatch.image}
-          alt={foundWatch.name}
-          width={100}
-          height={100}
-        />
+        <img src={foundWatch.image} alt={foundWatch.name} width="300px" />
         <p>{foundWatch.name}</p>
         <p>{foundWatch.description}</p>
         <p>Native to {foundWatch.location}</p>

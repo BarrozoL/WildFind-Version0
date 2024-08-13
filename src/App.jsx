@@ -28,13 +28,15 @@ import {
   updateWatch,
   getTypes,
   addAnimal,
+  addSighting,
+  getSightings,
 } from "../lib";
 
 function App() {
   const [types, setTypes] = useState([]);
   const [animals, setAnimals] = useState([]);
   const [watches, setWatches] = useState([]);
-
+  const [sightings, setSightings] = useState([""]);
   // Get the existing types of animals
   useEffect(() => {
     getTypes().then((data) => setTypes(data));
@@ -55,9 +57,8 @@ function App() {
   const newAnimal = (animal) => {
     addAnimal(animal).then((newAnimal) => setAnimals([...animals, newAnimal]));
   };
+
   // Get all watching animals
-
-
 
   useEffect(() => {
     getAllWatches()
@@ -68,7 +69,6 @@ function App() {
       .catch((error) => console.error("Error fetching watches:", error));
   }, []);
 
-
   // Delete watching animal
   const deleteWatch = (id) => {
     deleteWatchItem(id)
@@ -77,7 +77,6 @@ function App() {
       })
       .catch((error) => console.error("Error deleting watch:", error));
   };
-
 
   // Edit watch animal
   const editWatch = (watchItem) => {
@@ -88,6 +87,18 @@ function App() {
         );
       })
       .catch((error) => console.error("Error updating watch:", error));
+  };
+
+  // Get all sightings
+  useEffect(() => {
+    getSightings().then((data) => setSightings(data));
+  }, []);
+
+  // Add sighting
+  const newSighting = (sighting) => {
+    addSighting(sighting).then((newSight) =>
+      setSightings([...sightings, newSight])
+    );
   };
 
   return (
@@ -101,8 +112,8 @@ function App() {
           element={<AddAnimal types={types} addAnimal={addAnimal} />}
         />
         <Route
-          path="/add-sighting"
-          element={<AddSighting animals={animals} />}
+          path="/:animalId/add-sighting"
+          element={<AddSighting animals={animals} addSighting={newSighting} />}
         />
         <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
 
@@ -119,16 +130,14 @@ function App() {
 
         <Route
           path={`/animal-list/:animalId/sightings`}
-          element={<Sightings />}
+          element={<Sightings sightings={sightings} />}
         />
 
         <Route
           path="/animal-add"
-          element={<AddAnimal types={types} addAnimal={newAnimal} />}
-        />
-        <Route
-          path="/add-sighting"
-          element={<AddSighting animals={animals} />}
+          element={
+            <AddAnimal types={types} addAnimal={newAnimal} animals={animals} />
+          }
         />
 
         <Route path="/*" element={<Errorpage />} />
