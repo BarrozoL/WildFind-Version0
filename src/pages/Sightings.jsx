@@ -19,19 +19,18 @@ export default function Sightings({ sightings }) {
     <>
       <div className="spottingWrapper">
         <h3>Sightings:</h3>
-        <ul>
-          {filteredSightings.map((sighting) => {
-            return (
-              <div key={sighting.id}>
-                <li>{sighting.location}</li>
-                <li>{sighting.date}</li>
-                <li>{sighting.description}</li>
-                <br />
-                <br />
-              </div>
-            );
-          })}
-        </ul>
+
+        {filteredSightings.map((sighting) => {
+          return (
+            <ul key={sighting.id}>
+              <li>{sighting.location}</li>
+              <li>{sighting.date}</li>
+              <li>{sighting.description}</li>
+              <br />
+              <br />
+            </ul>
+          );
+        })}
       </div>
 
       <button onClick={handleNavigate}>Back</button>

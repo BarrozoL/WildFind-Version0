@@ -2,6 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addAnimal } from "../../lib";
 
+let defaultBirdImage;
+let defaultMammalImage;
+let defaultReptileImage;
+let defaultOtherImage;
+
 export default function AddAnimal({ types, addAnimal, animals }) {
   console.log(addAnimal);
   const [selectedAnimalType, setSelectedAnimalType] = useState("-");
@@ -65,10 +70,22 @@ export default function AddAnimal({ types, addAnimal, animals }) {
       }
     }
 
+    let img;
+
+    if (animalTypeId === 1) {
+      img = image || defaultBirdImage;
+    } else if (animalTypeId === 2) {
+      img = image || defaultMammalImage;
+    } else if (animalTypeId === 3) {
+      img = image || defaultReptileImage;
+    } else {
+      img = image || defaultOtherImage;
+    }
+
     const newAnimal = {
       typeId: animalTypeId,
       name,
-      image,
+      image: img,
       description,
       location,
     };
