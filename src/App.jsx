@@ -57,6 +57,7 @@ function App() {
   const newAnimal = (animal) => {
     addAnimal(animal).then((newAnimal) => setAnimals([...animals, newAnimal]));
   };
+
   // Get all watching animals
 
   useEffect(() => {
@@ -134,7 +135,9 @@ function App() {
 
         <Route
           path="/animal-add"
-          element={<AddAnimal types={types} addAnimal={newAnimal} />}
+          element={
+            <AddAnimal types={types} addAnimal={newAnimal} animals={animals} />
+          }
         />
 
         <Route path="/*" element={<Errorpage />} />
