@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-export default function AddSpottedAnimal({ animals }) {
-  console.log(animals);
-  const [name, setName] = useState("");
+export default function AddSighting({ animals, AddSighting }) {
+  const [date, setDate] = useState(new Date());
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const animalId = useParams().animalId;
+  const animalNumber = Number(animalId) - 1;
+  console.log(animals);
 
   const navigate = useNavigate();
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -21,27 +21,29 @@ export default function AddSpottedAnimal({ animals }) {
     setLocation(e.target.value);
   };
 
+  const handleDateChange = (date) => {
+    setDate(date);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !description || !location) {
+    if (!location || !date || !description) {
       alert("All fields are mandatory");
-    }
-
-    for (let i = i; i < animals.length; i++) {
-      if (animals[i].name == name) {
-      }
+      return;
     }
 
     const newSpotting = {
-      name,
-      description,
+      animalId,
       location,
+      date,
+      description,
     };
+
+    AddSighting(newSpotting);
 
     /* METHOD FOR ADDING SPOTTED ANIMAL WITH API */
 
-    setName("");
     setDescription("");
     setLocation("");
 
@@ -50,16 +52,19 @@ export default function AddSpottedAnimal({ animals }) {
 
   return (
     <div>
-      <h1>What and where did you spot?</h1>
+      <h1>Where and when did you spot {`${animals[animalNumber].name}`}?</h1>
       <form>
         <div>
-          <label>Animal name:</label>
+          <label>Location:</label>
           <input
             type="text"
-            name="name"
-            value={name}
-            onChange={handleNameChange}
+            name="location"
+            value={location}
+            onChange={handleLocationChange}
           />
+        </div>
+        <div>
+          <DatePicker selected={date} onChange={handleDateChange} />
         </div>
         <div>
           <label>Description:</label>
@@ -68,15 +73,6 @@ export default function AddSpottedAnimal({ animals }) {
             name="description"
             value={description}
             onChange={handleDescriptionChange}
-          />
-        </div>
-        <div>
-          <label>Location:</label>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={handleLocationChange}
           />
         </div>
         <button type="submit" onClick={handleSubmit}>

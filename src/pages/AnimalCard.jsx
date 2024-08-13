@@ -23,6 +23,10 @@ export default function AnimalCard() {
     navigate(`/animal-list/${animalId}/sightings`);
   };
 
+  const handleNewSighting = () => {
+    navigate(`/${animalId}/add-sighting`);
+  };
+
   const handleAddToWatchList = async () => {
     try {
       const response = await addToWatchList(
@@ -56,6 +60,7 @@ export default function AnimalCard() {
           Click to view locations where the {`${foundAnimal.name}`} has been
           seen
         </button>
+        <button onClick={handleNewSighting}>Add a sighting</button>
       </div>
     </>
   );
