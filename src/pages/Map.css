@@ -1,0 +1,19 @@
+.map-sightings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: normal;
+  position: absolute;
+  bottom: -20%;
+  left: 35%;
+  border: 1px solid black;
+  width: 150px;
+  height: 100px;
+  gap: 8px;
+}
+
+.map-sightings img {
+  width: 30px;
+  border-radius: 38%;
+  display: flex;
+}
