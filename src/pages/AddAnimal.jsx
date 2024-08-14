@@ -119,6 +119,10 @@ export default function AddAnimal({ types, addAnimal, animals }) {
   return (
     <div>
       <h1>What and where did you spot?</h1>
+      <h3>
+        Please check the list of animals to make sure your animal hasn't already
+        been added...
+      </h3>
       <form>
         <div>
           <label>Select the type of animal seen:</label>
