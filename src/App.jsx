@@ -16,7 +16,7 @@ import WatchDetails from "./pages/WatchDetails";
 import AddSighting from "./pages/AddSighting";
 import EditWatchPage from "./pages/EditWatch";
 import AddAnimal from "./pages/AddAnimal";
-import Map from "./pages/MapPage";
+import MapPage from "./pages/MapPage";
 
 // Components
 import WatchCard from "./components/WatchCard";
@@ -31,6 +31,7 @@ import {
   addAnimal,
   addSighting,
   getSightings,
+  getAnimalsWithSightings,
 } from "../lib";
 
 function App() {
@@ -136,7 +137,13 @@ function App() {
 
         <Route
           path={"/map"}
-          element={<Map animals={animals} sightings={sightings} />}
+          element={
+            <MapPage
+              getAnimalsWithSightings={getAnimalsWithSightings}
+              sightings={sightings}
+              animals={animals}
+            />
+          }
         />
 
         <Route
