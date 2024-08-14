@@ -51,6 +51,10 @@ export default function AnimalList({ animals }) {
     return typeMatch && nameMatch;
   });
 
+  const sortedAnimals = filteredAnimals.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   return (
     <>
       <input
@@ -72,7 +76,7 @@ export default function AnimalList({ animals }) {
       <button onClick={handleNavigate}>Add a new Animal!</button>
 
       <div className="animalWrapper">
-        {filteredAnimals.map((animal) => {
+        {sortedAnimals.map((animal) => {
           return (
             <Link to={`/animal-list/${animal.id}`} key={animal.id}>
               <div style={{ margin: "30px", border: "2px solid black" }}>
