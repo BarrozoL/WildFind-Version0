@@ -7,7 +7,7 @@ import defaultMammalImage from "../assets/images/fox.jpeg";
 import defaultReptileImage from "../assets/images/lizard.jpeg";
 import defaultOtherImage from "../assets/images/other-animal.jpeg";
 
-export default function AddAnimal({ types, addAnimal, animals }) {
+export default function AddAnimal({ types, addAnimal, animals, animalState }) {
   console.log(addAnimal);
   const [selectedAnimalType, setSelectedAnimalType] = useState("");
   const [name, setName] = useState("");
@@ -113,6 +113,7 @@ export default function AddAnimal({ types, addAnimal, animals }) {
     setDescription("");
     setLocation("");
 
+    animalState(newAnimal);
     navigate("/animal-list");
   };
 

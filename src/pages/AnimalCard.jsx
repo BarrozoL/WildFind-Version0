@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { addToWatchList, getAnimal } from "../../lib";
 
-export default function AnimalCard() {
+export default function AnimalCard({ watchState }) {
   const [foundAnimal, setFoundAnimal] = useState();
   const { animalId } = useParams();
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function AnimalCard() {
 
   useEffect(() => {
     getAnimal(animalId).then((data) => setFoundAnimal(data));
-  }, []);
+  }, [animalId]);
 
   const handleSightingNavigate = () => {
     navigate(`/animal-list/${animalId}/sightings`);
@@ -36,8 +36,9 @@ export default function AnimalCard() {
         foundAnimal.description,
         `Native to ${foundAnimal.location}`
       );
+      watchState(response);
       handleWatchNavigate();
-      location.reload(); //do something about this... maybe useState and spread
+      // location.reload(); //do something about this... maybe useState and spread
       console.log("animal added to watch list", response);
     } catch (error) {
       console.log(error, "can't add to watch list");

@@ -52,6 +52,11 @@ function App() {
       .catch((error) => console.error("Error fetching animals:", error));
   }, []);
 
+  //updates animals state, will be passed to AddAnimal (fixes reload problem of animal list after adding animal)
+  const animalState = (newAnimal) => {
+    setAnimals((prevAnimals) => [...prevAnimals, newAnimal]);
+  };
+
   // Add a new animal
 
   const newAnimal = (animal) => {
@@ -68,6 +73,11 @@ function App() {
       })
       .catch((error) => console.error("Error fetching watches:", error));
   }, []);
+
+  //updates watches state, will be passed to AnimalCard
+  const watchState = (newWatch) => {
+    setWatches((prevWatches) => [...prevWatches, newWatch]);
+  };
 
   // Delete watching animal
   const deleteWatch = (id) => {
@@ -111,7 +121,10 @@ function App() {
           path="/:animalId/add-sighting"
           element={<AddSighting animals={animals} addSighting={newSighting} />}
         />
-        <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
+        <Route
+          path={`/animal-list/:animalId`}
+          element={<AnimalCard watchState={watchState} />}
+        />
 
         <Route
           path="/watch"
@@ -132,7 +145,12 @@ function App() {
         <Route
           path="/animal-add"
           element={
-            <AddAnimal types={types} addAnimal={newAnimal} animals={animals} />
+            <AddAnimal
+              types={types}
+              addAnimal={newAnimal}
+              animals={animals}
+              animalState={animalState}
+            />
           }
         />
 

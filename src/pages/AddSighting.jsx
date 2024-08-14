@@ -30,6 +30,9 @@ export default function AddSighting({ animals, addSighting }) {
       date,
       description,
     };
+
+    console.log(date);
+
     addSighting(newSpotting);
     /* METHOD FOR ADDING SPOTTED ANIMAL WITH API */
     setDescription("");
