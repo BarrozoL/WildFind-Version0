@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //Receive the {animals} as a prop from the App, since the state stored and altered there.
 export default function AnimalList({ animals }) {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
+  const [theme, setTheme] = useState("");
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -12,8 +13,27 @@ export default function AnimalList({ animals }) {
   };
 
   const handleTypeFilter = (e) => {
-    setType(e.target.value);
+    const selectedType = e.target.value;
+    setType(selectedType);
+
+    // Update the theme state based on the selected type
+    if (selectedType === "Other") {
+      setTheme("other-theme");
+    } else {
+      setTheme("");
+    }
   };
+
+  useEffect(() => {
+    if (theme) {
+      document.body.classList.add(theme);
+    } else {
+      document.body.classList.remove("other-theme");
+    }
+    return () => {
+      document.body.classList.remove("other-theme");
+    };
+  }, [theme]);
 
   let filteredAnimals = animals.filter((animal) => {
     // Filter by type

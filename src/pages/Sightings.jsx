@@ -24,7 +24,7 @@ export default function Sightings({ sightings }) {
           const formattedDate = new Date(sighting.date).toString();
 
           return (
-            <ul key={sighting.id} style={{ listStyleType: "none" }}>
+            <ul key={sighting.id} style={{ listStyleType: "nonenpm " }}>
               <li>{sighting.location}</li>
               <li>{formattedDate}</li>
               <li>{sighting.description}</li>
