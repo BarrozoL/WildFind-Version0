@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //Receive the {animals} as a prop from the App, since the state stored and altered there.
 export default function AnimalList({ animals }) {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
+  const [theme, setTheme] = useState("");
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -12,8 +13,27 @@ export default function AnimalList({ animals }) {
   };
 
   const handleTypeFilter = (e) => {
-    setType(e.target.value);
+    const selectedType = e.target.value;
+    setType(selectedType);
+
+    // Update the theme state based on the selected type
+    if (selectedType === "Other") {
+      setTheme("other-theme");
+    } else {
+      setTheme("");
+    }
   };
+
+  useEffect(() => {
+    if (theme) {
+      document.body.classList.add(theme);
+    } else {
+      document.body.classList.remove("other-theme");
+    }
+    return () => {
+      document.body.classList.remove("other-theme");
+    };
+  }, [theme]);
 
   let filteredAnimals = animals.filter((animal) => {
     // Filter by type
@@ -31,11 +51,16 @@ export default function AnimalList({ animals }) {
     return typeMatch && nameMatch;
   });
 
+  const sortedAnimals = filteredAnimals.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   return (
     <>
       <input
         className="search-bar"
         type="text"
+        placeholder="Search..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -47,17 +72,20 @@ export default function AnimalList({ animals }) {
           <option value="Reptiles">Show Reptiles</option>
           <option value="Other">Show Other Animals</option>
         </select>
+
+        <button onClick={handleNavigate}>Add a new Animal!</button>
       </div>
-
-      <button onClick={handleNavigate}>Add a new Animal!</button>
-
       <div className="animalWrapper">
-        {filteredAnimals.map((animal) => {
+        {sortedAnimals.map((animal) => {
           return (
             <Link to={`/animal-list/${animal.id}`} key={animal.id}>
-              <div style={{ margin: "30px", border: "2px solid black" }}>
+              <div className="animal-cards">
                 <h3 style={{ color: "rgb(44,140,121)" }}>{animal.name}</h3>
-                <img width="80px" src={animal.image} />
+                <img
+                  width="180px"
+                  src={animal.image}
+                  style={{ borderRadius: "10px" }}
+                />
               </div>
             </Link>
           );

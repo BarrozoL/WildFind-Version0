@@ -4,23 +4,41 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <img className="nav-img" src="src\assets\images\WildFind-logo-5.png" />
+      <NavLink to="/">
+        <img
+          className="nav-img"
+          src="src\assets\images\WildFind-logo-5.png"
+          alt="WildFind logo"
+          width={100}
+        />
+      </NavLink>
+
       <nav>
         <ul>
-          <NavLink
+          {/* <NavLink
             to="/"
             //   className={({ isActive }) => (isActive ? "active" : "")}
           >
             Home
+          </NavLink> */}
+
+          <NavLink to="/animal-list" className="NavLink">
+            See all Animals
           </NavLink>
 
-          <NavLink to="/animal-list">Animals</NavLink>
+          <NavLink to="/animal-add" className="NavLink">
+            Seen a new animal? Add it!
+          </NavLink>
 
-          <NavLink to="/map">Map</NavLink>
+          <NavLink to="/map" className="NavLink">
+            Map
+          </NavLink>
 
-          <NavLink to="/add-sighting">Add a Sighting</NavLink>
+          {/* <NavLink to="/animal-add">Seen a new animal? Add it!</NavLink> */}
 
-          <NavLink to="/watch">View your Watchlist</NavLink>
+          <NavLink to="/watch" className="NavLink">
+            View your Watchlist
+          </NavLink>
         </ul>
       </nav>
     </div>

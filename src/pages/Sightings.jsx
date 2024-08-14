@@ -7,7 +7,7 @@ export default function Sightings({ sightings }) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/animal-list");
+    navigate(`/animal-list/${animalId}`);
   };
 
   const filteredSightings = sightings.filter(
@@ -20,10 +20,12 @@ export default function Sightings({ sightings }) {
         <h3>Sightings:</h3>
 
         {filteredSightings.map((sighting) => {
+          const formattedDate = new Date(sighting.date).toString();
+
           return (
-            <ul key={sighting.id}>
+            <ul key={sighting.id} style={{ listStyleType: "none" }}>
               <li>{sighting.location}</li>
-              <li>{sighting.date}</li>
+              <li>{formattedDate}</li>
               <li>{sighting.description}</li>
               <br />
               <br />

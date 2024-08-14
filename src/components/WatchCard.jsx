@@ -10,7 +10,7 @@ function WatchCard({ watch, deleteWatch }) {
 
   return (
     <li className="WatchCard" style={{ listStyleType: "none" }}>
-      <div style={{ margin: "30px", border: "2px solid black" }}>
+      <div className="watch-cards">
         <Link to={`/watch/${watch.id}/details`}>
           <h3 style={{ color: "rgb(44,140,121)" }}>{watch.name}</h3>
           <img width="80px" src={watch.image} />
