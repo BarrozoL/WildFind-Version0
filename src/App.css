@@ -71,6 +71,26 @@ body.light-mode .footer {
   font-size: 16px;
 }
 
+.type-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 12vw;
+  right: 6vw;
+}
+
+.type-select {
+  height: 20px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.full-list {
+  position: absolute;
+  top: 9vw;
+  right: 6vw;
+}
+
 body.light-mode .navbar {
   margin: 0;
   background-color: rgba(116, 172, 0, 255);

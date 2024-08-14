@@ -60,6 +60,7 @@ export default function AnimalList({ animals }) {
       <input
         className="search-bar"
         type="text"
+        placeholder="Search..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -71,10 +72,9 @@ export default function AnimalList({ animals }) {
           <option value="Reptiles">Show Reptiles</option>
           <option value="Other">Show Other Animals</option>
         </select>
+
+        <button onClick={handleNavigate}>Add a new Animal!</button>
       </div>
-
-      <button onClick={handleNavigate}>Add a new Animal!</button>
-
       <div className="animalWrapper">
         {sortedAnimals.map((animal) => {
           return (
