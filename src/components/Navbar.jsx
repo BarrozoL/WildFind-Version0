@@ -22,15 +22,23 @@ const Navbar = () => {
             Home
           </NavLink> */}
 
-          <NavLink to="/animal-list">See all Animals</NavLink>
+          <NavLink to="/animal-list" className="NavLink">
+            See all Animals
+          </NavLink>
 
-          <NavLink to="/animal-add">Seen a new animal? Add it!</NavLink>
+          <NavLink to="/animal-add" className="NavLink">
+            Seen a new animal? Add it!
+          </NavLink>
 
-          <NavLink to="/map">Map</NavLink>
+          <NavLink to="/map" className="NavLink">
+            Map
+          </NavLink>
 
           {/* <NavLink to="/animal-add">Seen a new animal? Add it!</NavLink> */}
 
-          <NavLink to="/watch">View your Watchlist</NavLink>
+          <NavLink to="/watch" className="NavLink">
+            View your Watchlist
+          </NavLink>
         </ul>
       </nav>
     </div>

@@ -31,6 +31,7 @@ export default function AnimalCard({ watchState }) {
     try {
       const response = await addToWatchList(
         animalId,
+        foundAnimal.typeId,
         foundAnimal.name,
         foundAnimal.image,
         foundAnimal.description,
