@@ -16,7 +16,7 @@ import WatchDetails from "./pages/WatchDetails";
 import AddSighting from "./pages/AddSighting";
 import EditWatchPage from "./pages/EditWatch";
 import AddAnimal from "./pages/AddAnimal";
-import Map from "./pages/Map";
+import Map from "./pages/MapPage";
 
 // Components
 import WatchCard from "./components/WatchCard";
