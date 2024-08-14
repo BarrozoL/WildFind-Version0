@@ -161,3 +161,27 @@ body.other-theme .navbar {
 .radio_item {
   display: none;
 }
+
+.animalWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.animal-cards {
+  margin: 30px;
+  border: 2px solid black;
+  width: 200px;
+  height: 250px;
+}
+
+.watchWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.watch-cards {
+  margin: 30px;
+  border: 2px solid black;
+  width: 200px;
+  height: 250px;
+}

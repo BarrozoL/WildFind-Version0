@@ -79,7 +79,7 @@ export default function AnimalList({ animals }) {
         {sortedAnimals.map((animal) => {
           return (
             <Link to={`/animal-list/${animal.id}`} key={animal.id}>
-              <div style={{ margin: "30px", border: "2px solid black" }}>
+              <div className="animal-cards">
                 <h3 style={{ color: "rgb(44,140,121)" }}>{animal.name}</h3>
                 <img width="80px" src={animal.image} />
               </div>
