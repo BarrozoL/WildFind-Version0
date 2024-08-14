@@ -18,7 +18,7 @@ const Navbar = () => {
 
           <NavLink to="/map">Map</NavLink>
 
-          <NavLink to="/add-sighting">Add a Sighting</NavLink>
+          <NavLink to="/animal-add">Seen a new animal? Add it!</NavLink>
 
           <NavLink to="/watch">View your Watchlist</NavLink>
         </ul>

@@ -108,10 +108,6 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
         <Route
-          path="/animal-add"
-          element={<AddAnimal types={types} addAnimal={addAnimal} />}
-        />
-        <Route
           path="/:animalId/add-sighting"
           element={<AddSighting animals={animals} addSighting={newSighting} />}
         />

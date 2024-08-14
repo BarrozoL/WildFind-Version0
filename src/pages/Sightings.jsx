@@ -8,7 +8,7 @@ export default function Sightings({ sightings }) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/animal-list");
+    navigate(`/animal-list/${animalId}`);
   };
 
   const filteredSightings = sightings.filter(

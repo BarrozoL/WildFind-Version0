@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addAnimal } from "../../lib";
 
-let defaultBirdImage;
-let defaultMammalImage;
-let defaultReptileImage;
-let defaultOtherImage;
+import defaultBirdImage from "../assets/images/bird.jpeg";
+import defaultMammalImage from "../assets/images/fox.jpeg";
+import defaultReptileImage from "../assets/images/lizard.jpeg";
+import defaultOtherImage from "../assets/images/other-animal.jpeg";
 
 export default function AddAnimal({ types, addAnimal, animals }) {
   console.log(addAnimal);
-  const [selectedAnimalType, setSelectedAnimalType] = useState("-");
+  const [selectedAnimalType, setSelectedAnimalType] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
 
@@ -17,8 +17,6 @@ export default function AddAnimal({ types, addAnimal, animals }) {
   const [location, setLocation] = useState("");
 
   const navigate = useNavigate();
-
-  const handleSightingNav = navigate("/add-sighting");
 
   const handleSelectedAnimalType = (e) => {
     setSelectedAnimalType(e.target.value);
@@ -40,11 +38,27 @@ export default function AddAnimal({ types, addAnimal, animals }) {
     setLocation(e.target.value);
   };
 
+  if (!animals) {
+    return <div>Loading, no animals...</div>;
+  }
+
+  if (animals.length === 0) {
+    return <div>Loading, empty animals...</div>;
+  }
+
   const animalExists = (animal) => {
-    animals.includes(
+    if (!Array.isArray(animals)) {
+      console.log(animals);
+      console.error("Animals data is not an array or is undefined.");
+      return null;
+    }
+
+    const foundAnimal = animals.find(
       (prevAnimal) =>
         prevAnimal.name.toLowerCase() === animal.name.toLowerCase()
     );
+
+    return foundAnimal ? foundAnimal.id : null;
   };
 
   const handleSubmit = (e) => {
@@ -55,10 +69,13 @@ export default function AddAnimal({ types, addAnimal, animals }) {
       return;
     }
 
-    if (animalExists) {
+    const existingAnimalId = animalExists({ name });
+
+    if (existingAnimalId) {
       alert(
-        "This animal has already been spotted! Please add a new sighting instead"
+        "This animal has already been spotted! Please add a new sighting instead. Redirecting to the animal's page."
       );
+      navigate(`/animal-list/${existingAnimalId}/`);
       return;
     }
 
@@ -104,7 +121,7 @@ export default function AddAnimal({ types, addAnimal, animals }) {
       <h1>What and where did you spot?</h1>
       <form>
         <div>
-          <label>Animal type:</label>
+          <label>Select the type of animal seen:</label>
 
           <select
             name="animalType"
@@ -112,6 +129,7 @@ export default function AddAnimal({ types, addAnimal, animals }) {
             onChange={handleSelectedAnimalType}
             value={selectedAnimalType}
           >
+            <option value=""></option>
             <option value="bird">Bird</option>
             <option value="mammal">Mammal</option>
             <option value="reptile">Reptile</option>
@@ -156,9 +174,6 @@ export default function AddAnimal({ types, addAnimal, animals }) {
         </div>
         <button type="submit" onClick={handleSubmit}>
           Submit
-        </button>
-        <button onClick={handleSightingNav}>
-          Add a Sighting of an existing animal
         </button>
       </form>
     </div>
