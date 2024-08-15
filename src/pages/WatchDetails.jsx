@@ -29,8 +29,9 @@ function WatchDetails() {
   return (
     <div className="watchDetailWrapper">
       <div key={foundWatch.id}>
+        <h3>{foundWatch.name}</h3>
         <img src={foundWatch.image} alt={foundWatch.name} width="300px" />
-        <p>{foundWatch.name}</p>
+        <p>{`Danger Level: ${foundWatch.dangerLevel}`}</p>
         <p>{foundWatch.description}</p>
         <p>Native to {foundWatch.location}</p>
         <button className="editWatch-btn" onClick={handleEditNavigate}>

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import WildFindLogo from "../assets/images/WildFind-logo-5.png";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -17,7 +18,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>WildFind</h1>
+      <img src={WildFindLogo} alt="WildFind logo" width="50%" height="50%" />
+      {/* <h1>WildFind</h1> */}
+      <br />
       <button onClick={handleAnimalNavigate}>See your local animals</button>
       <button onClick={handleMapNavigate}>
         See a map of local animal sightings
