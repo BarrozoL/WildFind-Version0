@@ -141,7 +141,7 @@ function App() {
 
         <Route
           path={`/animal-list/:animalId/sightings`}
-          element={<Sightings sightings={sightings} />}
+          element={<Sightings getAnimalsWithSightings={getAnimalsWithSightings} sightings={sightings} />}
         />
 
         <Route

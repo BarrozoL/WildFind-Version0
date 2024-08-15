@@ -22,12 +22,12 @@ const Navbar = () => {
             Home
           </NavLink> */}
 
-          <NavLink to="/animal-list" className="NavLink">
-            See all Animals
-          </NavLink>
-
           <NavLink to="/animal-add" className="NavLink">
             Seen a new animal? Add it!
+          </NavLink>
+
+          <NavLink to="/animal-list" className="NavLink">
+            See all Animals
           </NavLink>
 
           <NavLink to="/map" className="NavLink">
