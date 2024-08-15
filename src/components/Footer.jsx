@@ -33,7 +33,7 @@ const Footer = () => {
 
       <div className="radio">
         <label></label>
-        {/* <label>Theme:</label> */}
+        <label className="theme-label">Theme:</label>
         <div className="radio-group">
           <label>
             <input

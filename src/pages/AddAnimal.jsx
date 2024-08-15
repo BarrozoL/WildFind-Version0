@@ -135,13 +135,13 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
   };
 
   return (
-    <div>
+    <div className="add-form">
       <h1>What and where did you spot?</h1>
       <h3>
         Please check the list of animals to make sure your animal hasn't already
         been added...
       </h3>
-      <form>
+      <form className="add-inputs">
         <div>
           <label>Select the type of animal seen:</label>
 
@@ -183,6 +183,7 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
             name="danger"
             value={danger}
             onChange={handleDangerChange}
+            className="danger-input"
           />
         </div>
         <div>
@@ -203,9 +204,11 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
             onChange={handleLocationChange}
           />
         </div>
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
+        <div className="add-submit">
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

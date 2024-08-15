@@ -47,9 +47,9 @@ export default function AddSighting({ animals, addSighting }) {
     navigate("/animal-list");
   };
   return (
-    <div>
+    <div className="sighting-form">
       <h1>Where and when did you spot {`${animals[animalNumber].name}`}?</h1>
-      <form>
+      <form className="sighting-inputs">
         <div>
           <label>Location:</label>
           <select
@@ -79,6 +79,7 @@ export default function AddSighting({ animals, addSighting }) {
           </select>
         </div>
         <div>
+          <label>Date:</label>
           <DatePicker selected={date} onChange={handleDateChange} />
         </div>
         <div>
@@ -97,11 +98,14 @@ export default function AddSighting({ animals, addSighting }) {
             name="image"
             value={image}
             onChange={handleImageChange}
+            className="sighting-img"
           />
         </div>
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
+        <div className="sighting-submit">
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
