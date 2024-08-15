@@ -20,14 +20,18 @@ export default function MapListing({ matchingAnimals, location }) {
             ""
           )}
         </div>
-        {animalsArray.map((animal) => (
-          <Link to={`/animal-list/${animal.id}`} key={animal.id}>
-            <div>
-              <h4 style={{ color: "green", width: "100px" }}>{animal.name}</h4>
-              <img stylewidth="100px" src={animal.image} />
-            </div>
-          </Link>
-        ))}
+        <div className="sighting-card">
+          {animalsArray.map((animal) => (
+            <Link to={`/animal-list/${animal.id}`} key={animal.id}>
+              <div>
+                <h4 style={{ color: "green", width: "100px" }}>
+                  {animal.name}
+                </h4>
+                <img stylewidth="100px" src={animal.image} />
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );

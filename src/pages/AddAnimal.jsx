@@ -16,7 +16,7 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
   const [selectedAnimalType, setSelectedAnimalType] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-
+  const [danger, setDanger] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
 
@@ -32,6 +32,10 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
 
   const handleImageChange = (e) => {
     setImage(e.target.value);
+  };
+
+  const handleDangerChange = (e) => {
+    setDanger(e.target.value);
   };
 
   const handleDescriptionChange = (e) => {
@@ -115,6 +119,7 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
       typeId: animalTypeId,
       name,
       image: img,
+      dangerLevel: danger,
       description,
       location,
     };
@@ -124,7 +129,7 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
     setName("");
     setDescription("");
     setLocation("");
-
+    setDanger("");
     animalState(newAnimal);
     navigate("/animal-list");
   };
@@ -169,6 +174,15 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
             name="image"
             value={image}
             onChange={handleImageChange}
+          />
+        </div>
+        <div>
+          <label>{`Estimated Danger Level (1-5)`}:</label>
+          <input
+            type="text"
+            name="danger"
+            value={danger}
+            onChange={handleDangerChange}
           />
         </div>
         <div>

@@ -59,7 +59,7 @@ export default function WatchList({ watches, deleteWatch }) {
   );
 
   return (
-    <>
+    <div className="watch-list">
       <input
         className="search-bar"
         type="text"
@@ -89,6 +89,6 @@ export default function WatchList({ watches, deleteWatch }) {
           <WatchCard key={watch.id} watch={watch} deleteWatch={deleteWatch} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
