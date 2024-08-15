@@ -1,0 +1,35 @@
+.map-sightings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: normal;
+  position: absolute;
+  /*  border: 1px solid black; */
+  gap: 8px;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: 8%;
+  top: 25%;
+}
+
+.map-sightings img {
+  width: 80px;
+  border-radius: 38%;
+  display: flex;
+  padding: 15px;
+}
+
+.svg-map-image {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+}
+
+.individual-districts:hover {
+  fill: rgb(2, 137, 2);
+}
+
+.individual-districts:active {
+  fill: rgb(20, 99, 20);
+}

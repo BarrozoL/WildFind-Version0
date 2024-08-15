@@ -2,18 +2,22 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getAnimal } from "../../lib";
 
-export default function Sightings({ sightings }) {
-  /*  const [foundAnimal, setFoundAnimal] = useState(); */
+export default function Sightings({ sightings, getAnimalsWithSightings }) {
+  const [sights, setSights] = useState();
   const { animalId } = useParams();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/animal-list");
+    navigate(`/animal-list/${animalId}`);
   };
 
   const filteredSightings = sightings.filter(
-    (sight) => sight.animalId === animalId
+    (sight) => Number(sight.animalId) === Number(animalId)
   );
+
+  useEffect(() => {
+    getAnimalsWithSightings().then((data) => setSights(data));
+  }, []);
 
   return (
     <>
@@ -21,10 +25,12 @@ export default function Sightings({ sightings }) {
         <h3>Sightings:</h3>
 
         {filteredSightings.map((sighting) => {
+          const formattedDate = new Date(sighting.date).toString();
+          console.log(filteredSightings);
           return (
-            <ul key={sighting.id}>
+            <ul key={sighting.id} style={{ listStyleType: "none" }}>
               <li>{sighting.location}</li>
-              <li>{sighting.date}</li>
+              <li>{formattedDate}</li>
               <li>{sighting.description}</li>
               <br />
               <br />

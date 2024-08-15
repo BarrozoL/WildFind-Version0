@@ -16,6 +16,7 @@ import WatchDetails from "./pages/WatchDetails";
 import AddSighting from "./pages/AddSighting";
 import EditWatchPage from "./pages/EditWatch";
 import AddAnimal from "./pages/AddAnimal";
+import MapPage from "./pages/MapPage";
 
 // Components
 import WatchCard from "./components/WatchCard";
@@ -30,6 +31,7 @@ import {
   addAnimal,
   addSighting,
   getSightings,
+  getAnimalsWithSightings,
 } from "../lib";
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
   const [animals, setAnimals] = useState([]);
   const [watches, setWatches] = useState([]);
   const [sightings, setSightings] = useState([""]);
+
   // Get the existing types of animals
   useEffect(() => {
     getTypes().then((data) => setTypes(data));
@@ -46,11 +49,15 @@ function App() {
   useEffect(() => {
     getAllAnimals()
       .then((data) => {
-        console.log("Fetched animals:", data);
         setAnimals(data);
       })
       .catch((error) => console.error("Error fetching animals:", error));
   }, []);
+
+  //updates animals state, will be passed to AddAnimal (fixes reload problem of animal list after adding animal)
+  const animalState = (newAnimal) => {
+    setAnimals((prevAnimals) => [...prevAnimals, newAnimal]);
+  };
 
   // Add a new animal
 
@@ -63,11 +70,15 @@ function App() {
   useEffect(() => {
     getAllWatches()
       .then((data) => {
-        console.log("Fetched watches:", data);
         setWatches(data);
       })
       .catch((error) => console.error("Error fetching watches:", error));
   }, []);
+
+  //updates watches state, will be passed to AnimalCard
+  const watchState = (newWatch) => {
+    setWatches((prevWatches) => [...prevWatches, newWatch]);
+  };
 
   // Delete watching animal
   const deleteWatch = (id) => {
@@ -108,19 +119,19 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/animal-list" element={<AnimalList animals={animals} />} />
         <Route
-          path="/animal-add"
-          element={<AddAnimal types={types} addAnimal={addAnimal} />}
-        />
-        <Route
           path="/:animalId/add-sighting"
           element={<AddSighting animals={animals} addSighting={newSighting} />}
         />
-        <Route path={`/animal-list/:animalId`} element={<AnimalCard />} />
+        <Route
+          path={`/animal-list/:animalId`}
+          element={<AnimalCard watchState={watchState} />}
+        />
 
         <Route
           path="/watch"
           element={<WatchList watches={watches} deleteWatch={deleteWatch} />}
         />
+
         <Route
           path="/watch/:watchId/edit-watch"
           element={<EditWatchPage editWatch={editWatch} watches={watches} />}
@@ -130,13 +141,29 @@ function App() {
 
         <Route
           path={`/animal-list/:animalId/sightings`}
-          element={<Sightings sightings={sightings} />}
+          element={<Sightings getAnimalsWithSightings={getAnimalsWithSightings} sightings={sightings} />}
+        />
+
+        <Route
+          path={"/map"}
+          element={
+            <MapPage
+              getAnimalsWithSightings={getAnimalsWithSightings}
+              sightings={sightings}
+              animals={animals}
+            />
+          }
         />
 
         <Route
           path="/animal-add"
           element={
-            <AddAnimal types={types} addAnimal={newAnimal} animals={animals} />
+            <AddAnimal
+              types={types}
+              addAnimal={newAnimal}
+              animals={animals}
+              animalState={animalState}
+            />
           }
         />
 
