@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import WildFindLogo from "../assets/images/WildFind-logo-5.png";
 
 const Navbar = () => {
   return (
@@ -7,7 +8,7 @@ const Navbar = () => {
       <NavLink to="/">
         <img
           className="nav-img"
-          src="src\assets\images\WildFind-logo-5.png"
+          src={WildFindLogo}
           alt="WildFind logo"
           width={100}
         />

@@ -35,7 +35,8 @@ export default function AnimalCard({ watchState }) {
         foundAnimal.name,
         foundAnimal.image,
         foundAnimal.description,
-        `Native to ${foundAnimal.location}`
+        `Native to ${foundAnimal.location}`,
+        foundAnimal.dangerLevel
       );
       watchState(response);
       handleWatchNavigate();
@@ -54,6 +55,7 @@ export default function AnimalCard({ watchState }) {
         <div key={foundAnimal.id}></div>
         <h3>{foundAnimal.name}</h3>
         <img src={foundAnimal.image} alt={foundAnimal.name} width="300px" />
+        <p>{`Danger level: ${foundAnimal.dangerLevel}`}</p>
         <p>{foundAnimal.description}</p>
         <p>Native to {foundAnimal.location}</p>
         <button onClick={handleNavigate}>Back</button>

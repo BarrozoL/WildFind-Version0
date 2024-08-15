@@ -6,6 +6,7 @@ export default function AddSighting({ animals, addSighting }) {
   const [date, setDate] = useState(new Date());
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const [image, setImage] = useState("");
   const animalId = useParams().animalId;
   const animalNumber = Number(animalId) - 1;
   const navigate = useNavigate();
@@ -15,9 +16,15 @@ export default function AddSighting({ animals, addSighting }) {
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
+  };
+
   const handleDateChange = (date) => {
     setDate(date);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!date || !description) {
@@ -29,6 +36,7 @@ export default function AddSighting({ animals, addSighting }) {
       location,
       date,
       description,
+      image,
     };
 
     console.log(date);
@@ -37,6 +45,7 @@ export default function AddSighting({ animals, addSighting }) {
     /* METHOD FOR ADDING SPOTTED ANIMAL WITH API */
     setDescription("");
     setLocation("");
+    setImage("");
     navigate("/animal-list");
   };
   return (
@@ -75,12 +84,21 @@ export default function AddSighting({ animals, addSighting }) {
           <DatePicker selected={date} onChange={handleDateChange} />
         </div>
         <div>
-          <label>Description:</label>
+          <label>Description of sighting:</label>
           <input
             type="text"
             name="description"
             value={description}
             onChange={handleDescriptionChange}
+          />
+        </div>
+        <div>
+          <label>{`Picture of sighting (optional):`}</label>
+          <input
+            type="text"
+            name="image"
+            value={image}
+            onChange={handleImageChange}
           />
         </div>
         <button type="submit" onClick={handleSubmit}>
