@@ -27,11 +27,7 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <a
-        href="https://github.com/BarrozoL/WildFind/tree/nav-and-home"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://github.com/BarrozoL/WildFind/tree/main" target="_blank">
         Click here to go to the repo!
       </a>
 
