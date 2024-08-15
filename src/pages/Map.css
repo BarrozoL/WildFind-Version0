@@ -4,9 +4,7 @@
   flex-wrap: wrap;
   align-items: normal;
   position: absolute;
-  /*  border: 1px solid black; */
   gap: 8px;
-  position: absolute;
   width: 400px;
   height: 400px;
   right: 8%;
@@ -32,4 +30,11 @@
 
 .individual-districts:active {
   fill: rgb(20, 99, 20);
+}
+
+.location-tag {
+  position: absolute;
+  top: -23%;
+  left: 10%;
+  width: 300px;
 }
