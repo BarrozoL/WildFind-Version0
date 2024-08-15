@@ -29,6 +29,9 @@ export default function Sightings({ sightings, getAnimalsWithSightings }) {
           console.log(filteredSightings);
           return (
             <ul key={sighting.id} style={{ listStyleType: "none" }}>
+              {sighting.image && sighting.image.trim() !== "" && (
+                <img src={sighting.image} alt="image of sighting" />
+              )}
               <li>{sighting.location}</li>
               <li>{formattedDate}</li>
               <li>{sighting.description}</li>
