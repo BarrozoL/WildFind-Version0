@@ -38,7 +38,7 @@ export default function AnimalList({ animals }) {
   let filteredAnimals = animals.filter((animal) => {
     // Filter by type
     const typeMatch =
-      !type ||
+      (!type && animal.typeId !== 7 && animal.typeId !== 8) ||
       (type === "Birds" && animal.typeId === 1) ||
       (type === "Mammals" && animal.typeId === 2) ||
       (type === "Reptiles" && animal.typeId === 3) ||

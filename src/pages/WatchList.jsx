@@ -38,15 +38,15 @@ export default function WatchList({ watches, deleteWatch }) {
   let filteredWatches = watches.filter((watch) => {
     // Filter by type
     const typeMatch =
-      !type ||
-      (type === "Birds" && animal.typeId === 1) ||
-      (type === "Mammals" && animal.typeId === 2) ||
-      (type === "Reptiles" && animal.typeId === 3) ||
-      (type === "Reptiles" && animal.typeId === 4) ||
-      (type === "Reptiles" && animal.typeId === 5) ||
-      (type === "Reptiles" && animal.typeId === 6) ||
-      (type === "Reptiles" && animal.typeId === 7) ||
-      (type === "Other" && animal.typeId === 8);
+      (!type && watch.typeId !== 7 && watch.typeId !== 8) ||
+      (type === "Birds" && watch.typeId === 1) ||
+      (type === "Mammals" && watch.typeId === 2) ||
+      (type === "Reptiles" && watch.typeId === 3) ||
+      (type === "Insects" && watch.typeId === 4) ||
+      (type === "Amphibians" && watch.typeId === 5) ||
+      (type === "Aquatic Animals" && watch.typeId === 6) ||
+      (type === "Pets" && watch.typeId === 7) ||
+      (type === "Other" && watch.typeId === 8);
 
     // Filter by name
     const nameMatch = watch.name.toLowerCase().includes(search.toLowerCase());
