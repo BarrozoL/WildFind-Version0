@@ -60,28 +60,30 @@ export default function WatchList({ watches, deleteWatch }) {
 
   return (
     <div className="watch-list">
-      <input
-        className="search-bar"
-        type="text"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="sidebar">
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-      <div className="type-select-wrapper">
-        <select className="type-select" onChange={handleTypeFilter}>
-          <option value="">Show All Animals</option>
-          <option value="Birds">Show Birds</option>
-          <option value="Mammals">Show Mammals</option>
-          <option value="Reptiles">Show Reptiles</option>
-          <option value="Insects">Show Insects</option>
-          <option value="Amphibians">Show Amphibians</option>
-          <option value="Aquatic Animals">Show Aquatic Animals</option>
-          <option value="Pets">Show Pets</option>
-          <option value="Other">Show Other Animals</option>
-        </select>
+        <div className="type-select-wrapper">
+          <select className="type-select" onChange={handleTypeFilter}>
+            <option value="">Show All Animals</option>
+            <option value="Birds">Show Birds</option>
+            <option value="Mammals">Show Mammals</option>
+            <option value="Reptiles">Show Reptiles</option>
+            <option value="Insects">Show Insects</option>
+            <option value="Amphibians">Show Amphibians</option>
+            <option value="Aquatic Animals">Show Aquatic Animals</option>
+            <option value="Pets">Show Pets</option>
+            <option value="Other">Show Other Animals</option>
+          </select>
 
-        <button onClick={handleNavigate}>View all animals</button>
+          <button onClick={handleNavigate}>View all animals</button>
+        </div>
       </div>
 
       <div className="watchWrapper">

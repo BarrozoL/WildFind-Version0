@@ -91,7 +91,7 @@ export default function AnimalList({ animals }) {
           return (
             <Link to={`/animal-list/${animal.id}`} key={animal.id}>
               <div className="animal-cards">
-                <h3 style={{ color: "rgb(44,140,121)" }}>{animal.name}</h3>
+                <h3>{animal.name}</h3>
                 <img
                   width="180px"
                   src={animal.image}
