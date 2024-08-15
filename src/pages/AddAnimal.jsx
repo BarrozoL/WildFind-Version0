@@ -169,7 +169,7 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
           />
         </div>
         <div>
-          <label>Location:</label>
+          <label>Native to:</label>
           <input
             type="text"
             name="location"
