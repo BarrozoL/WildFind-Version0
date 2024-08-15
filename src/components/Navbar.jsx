@@ -31,6 +31,9 @@ const Navbar = () => {
             See all Animals
           </NavLink>
 
+          <NavLink to="/plant-list" className="NavLink">
+            See all Plants
+          </NavLink>
           <NavLink to="/map" className="NavLink">
             Map
           </NavLink>

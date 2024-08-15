@@ -32,13 +32,21 @@ import {
   addSighting,
   getSightings,
   getAnimalsWithSightings,
+  getAllPlants,
 } from "../lib";
+import PlantList from "./pages/PlantList";
+import PlantDetails from "./pages/PlantDetails";
 
 function App() {
   const [types, setTypes] = useState([]);
   const [animals, setAnimals] = useState([]);
   const [watches, setWatches] = useState([]);
   const [sightings, setSightings] = useState([""]);
+  const [plants, setPlants] = useState([]);
+
+  useEffect(() => {
+    getAllPlants().then((data) => setPlants(data));
+  }, []);
 
   // Get the existing types of animals
   useEffect(() => {
@@ -127,6 +135,10 @@ function App() {
           element={<AnimalCard watchState={watchState} />}
         />
 
+        <Route path="/plant-list" element={<PlantList plants={plants} />} />
+
+        <Route path="/plant-list/:plantId" element={<PlantDetails />} />
+
         <Route
           path="/watch"
           element={<WatchList watches={watches} deleteWatch={deleteWatch} />}
@@ -141,7 +153,12 @@ function App() {
 
         <Route
           path={`/animal-list/:animalId/sightings`}
-          element={<Sightings getAnimalsWithSightings={getAnimalsWithSightings} sightings={sightings} />}
+          element={
+            <Sightings
+              getAnimalsWithSightings={getAnimalsWithSightings}
+              sightings={sightings}
+            />
+          }
         />
 
         <Route
