@@ -17,7 +17,7 @@ export default function HomePage() {
   };
 
   return (
-    <div>
+    <div className="home">
       <img src={WildFindLogo} alt="WildFind logo" width="50%" height="50%" />
       {/* <h1>WildFind</h1> */}
       <br />
