@@ -31,7 +31,7 @@ export default function MapPage({ getAnimalsWithSightings }) {
   return (
     <>
       <Map findLocation={findLocation} />
-      <MapListing matchingAnimals={matchingAnimals} />
+      <MapListing location={location} matchingAnimals={matchingAnimals} />
     </>
   );
 }
