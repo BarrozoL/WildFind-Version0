@@ -19,8 +19,8 @@ function WatchCard({ watch, deleteWatch }) {
             style={{ borderRadius: "10px" }}
           />
         </Link>
-        <br />
-        <div style={{ marginBottom: "10px" }}>
+        {/* <br /> */}
+        <div style={{ marginBottom: "10px" }} className="watch-buttons">
           <button className="editWatch-btn" onClick={handleEditNavigate}>
             Edit
           </button>
