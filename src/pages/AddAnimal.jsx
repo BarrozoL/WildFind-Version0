@@ -5,6 +5,10 @@ import { addAnimal } from "../../lib";
 import defaultBirdImage from "../assets/images/bird.jpeg";
 import defaultMammalImage from "../assets/images/fox.jpeg";
 import defaultReptileImage from "../assets/images/lizard.jpeg";
+import defaultInsectImage from "../assets/images/beetle.jpeg";
+import defaultAmphibianImage from "../assets/images/frog.jpeg";
+import defaultAquaticImage from "../assets/images/fish.jpeg";
+import defaultPetImage from "../assets/images/dog.jpeg";
 import defaultOtherImage from "../assets/images/other-animal.jpeg";
 
 export default function AddAnimal({ types, addAnimal, animals, animalState }) {
@@ -95,6 +99,14 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
       img = image || defaultMammalImage;
     } else if (animalTypeId === 3) {
       img = image || defaultReptileImage;
+    } else if (animalTypeId === 4) {
+      img = image || defaultInsectImage;
+    } else if (animalTypeId === 5) {
+      img = image || defaultAmphibianImage;
+    } else if (animalTypeId === 6) {
+      img = image || defaultAquaticImage;
+    } else if (animalTypeId === 7) {
+      img = image || defaultPetImage;
     } else {
       img = image || defaultOtherImage;
     }
@@ -169,7 +181,7 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
           />
         </div>
         <div>
-          <label>Location:</label>
+          <label>Native to:</label>
           <input
             type="text"
             name="location"
