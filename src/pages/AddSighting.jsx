@@ -31,8 +31,11 @@ export default function AddSighting({ animals, addSighting }) {
       alert("All fields are mandatory");
       return;
     }
+    const typeId = animals[animalNumber]?.typeId;
+
     const newSpotting = {
       animalId,
+      typeId,
       location,
       date,
       description,
@@ -83,7 +86,7 @@ export default function AddSighting({ animals, addSighting }) {
           <DatePicker selected={date} onChange={handleDateChange} />
         </div>
         <div>
-          <label>Description of sighting:</label>
+          <label>Comment:</label>
           <input
             type="text"
             name="description"

@@ -8,7 +8,7 @@ export default function MapListing({ matchingAnimals, location }) {
   }); */
 
   return (
-    <>
+    <div className="map-wrap">
       <div className="map-sightings">
         <div>
           {" "}
@@ -24,7 +24,7 @@ export default function MapListing({ matchingAnimals, location }) {
           {animalsArray.map((animal) => (
             <Link to={`/animal-list/${animal.id}`} key={animal.id}>
               <div>
-                <h4 style={{ color: "green", width: "100px" }}>
+                <h4 style={{ color: "rgb(44, 140, 121)", width: "100px" }}>
                   {animal.name}
                 </h4>
                 <img stylewidth="100px" src={animal.image} />
@@ -33,6 +33,6 @@ export default function MapListing({ matchingAnimals, location }) {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
