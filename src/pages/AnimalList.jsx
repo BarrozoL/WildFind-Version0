@@ -38,11 +38,15 @@ export default function AnimalList({ animals }) {
   let filteredAnimals = animals.filter((animal) => {
     // Filter by type
     const typeMatch =
-      !type ||
+      (!type && animal.typeId !== 7 && animal.typeId !== 8) ||
       (type === "Birds" && animal.typeId === 1) ||
       (type === "Mammals" && animal.typeId === 2) ||
       (type === "Reptiles" && animal.typeId === 3) ||
-      (type === "Other" && animal.typeId === 4);
+      (type === "Insects" && animal.typeId === 4) ||
+      (type === "Amphibians" && animal.typeId === 5) ||
+      (type === "Aquatic Animals" && animal.typeId === 6) ||
+      (type === "Pets" && animal.typeId === 7) ||
+      (type === "Other" && animal.typeId === 8);
 
     // Filter by name
     const nameMatch = animal.name.toLowerCase().includes(search.toLowerCase());
@@ -70,6 +74,10 @@ export default function AnimalList({ animals }) {
           <option value="Birds">Show Birds</option>
           <option value="Mammals">Show Mammals</option>
           <option value="Reptiles">Show Reptiles</option>
+          <option value="Insects">Show Insects</option>
+          <option value="Amphibians">Show Amphibians</option>
+          <option value="Aquatic Animals">Show Aquatic Animals</option>
+          <option value="Pets">Show Pets</option>
           <option value="Other">Show Other Animals</option>
         </select>
 
