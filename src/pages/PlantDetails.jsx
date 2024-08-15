@@ -19,7 +19,7 @@ export default function PlantDetails() {
     <div className="animalDetailWrapper" key={foundPlant.id}>
       {console.log(foundPlant)}
       <h3>{foundPlant.name}</h3>
-      <img src={foundPlant.image} />
+      <img width="300px" src={foundPlant.image} />
       <p>{foundPlant.description}</p>
       <p>Native to {foundPlant.location}</p>
       <p>{foundPlant.edible}</p>
