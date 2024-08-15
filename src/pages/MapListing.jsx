@@ -1,24 +1,18 @@
-export default function MapListing({ matchingAnimals }) {
-  console.log("matchingAnimals", matchingAnimals);
+import { Link } from "react-router-dom";
 
+export default function MapListing({ matchingAnimals }) {
   const animalsArray = Array.from(matchingAnimals);
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          width: "500px",
-          height: "500px",
-          right: "5%",
-          top: "20%",
-        }}
-      >
+      <div className="map-sightings">
         {animalsArray.map((animal) => (
-          <div key={animal.id}>
-            <p>{animal.name}</p>
-            <img width="100px" src={animal.image} />
-          </div>
+          <Link to={`/animal-list/${animal.id}`} key={animal.id}>
+            <div>
+              <h4 style={{ color: "green" }}>{animal.name}</h4>
+              <img stylewidth="100px" src={animal.image} />
+            </div>
+          </Link>
         ))}
       </div>
     </>
