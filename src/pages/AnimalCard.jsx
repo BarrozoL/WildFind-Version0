@@ -7,6 +7,23 @@ export default function AnimalCard({ watchState }) {
   const { animalId } = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getAnimal(animalId).then((data) => setFoundAnimal(data));
+  }, [animalId]);
+
+  useEffect(() => {
+    if (foundAnimal?.typeId === 8) {
+      document.body.classList.add("other-theme");
+    } else {
+      document.body.classList.remove("other-theme");
+    }
+
+    // Clean up when the component is unmounted or `foundAnimal` changes
+    return () => {
+      document.body.classList.remove("other-theme");
+    };
+  }, [foundAnimal]);
+
   const handleNavigate = () => {
     navigate("/animal-list");
   };
@@ -14,10 +31,6 @@ export default function AnimalCard({ watchState }) {
   const handleWatchNavigate = () => {
     navigate("/watch");
   };
-
-  useEffect(() => {
-    getAnimal(animalId).then((data) => setFoundAnimal(data));
-  }, [animalId]);
 
   const handleSightingNavigate = () => {
     navigate(`/animal-list/${animalId}/sightings`);
@@ -40,7 +53,6 @@ export default function AnimalCard({ watchState }) {
       );
       watchState(response);
       handleWatchNavigate();
-      // location.reload(); //do something about this... maybe useState and spread
       console.log("animal added to watch list", response);
     } catch (error) {
       console.log(error, "can't add to watch list");
@@ -58,13 +70,21 @@ export default function AnimalCard({ watchState }) {
         <p>{`Danger level: ${foundAnimal.dangerLevel}`}</p>
         <p>{foundAnimal.description}</p>
         <p>Native to {foundAnimal.location}</p>
-        <button onClick={handleNavigate}>Back</button>
-        <button onClick={handleAddToWatchList}>Add to Watch List</button>
-        <button onClick={handleSightingNavigate}>
-          Click to view locations where the {`${foundAnimal.name}`} has been
-          seen
-        </button>
-        <button onClick={handleNewSighting}>Add a sighting</button>
+        <div className="button-details">
+          <button onClick={handleAddToWatchList} className="detail-button">
+            Add to Watch List
+          </button>
+          <button onClick={handleSightingNavigate} className="sightings-button">
+            Click to view locations where the {`${foundAnimal.name}`} has been
+            seen
+          </button>
+          <button onClick={handleNewSighting} className="detail-button">
+            Add a sighting
+          </button>
+          <button onClick={handleNavigate} className="detail-button">
+            Back
+          </button>
+        </div>
       </div>
     </>
   );

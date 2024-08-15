@@ -7,6 +7,28 @@ function WatchDetails() {
   const { watchId } = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getWatch(watchId)
+      .then((data) => {
+        console.log("Fetched watch:", data);
+        setFoundWatch(data);
+      })
+      .catch((error) => console.error("Error fetching watch:", error));
+  }, [watchId]);
+
+  useEffect(() => {
+    if (foundWatch && foundWatch.typeId === 8) {
+      document.body.classList.add("other-theme");
+    } else {
+      document.body.classList.remove("other-theme");
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.classList.remove("other-theme");
+    };
+  }, [foundWatch]);
+
   const handleNavigate = () => {
     navigate("/watch");
   };

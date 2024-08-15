@@ -387,6 +387,40 @@ body.dark-mode .sidebar select {
     left: 10%;
   }
 
+  body.light-mode .animalDetailWrapper {
+    margin-top: 0;
+    background-color: #d7e8c0;
+    color: rgb(44, 140, 121);
+    border-radius: 5px;
+    width: 300px;
+    height: 580px;
+  }
+  .animalDetailWrapper img {
+    border-radius: 5px;
+    width: 200px;
+  }
+  .detail-button {
+    height: 30px;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    background-color: rgb(44, 140, 121);
+  }
+  .button-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+  }
+
+  .sightings-button {
+    width: 280px;
+    height: 50px;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    background-color: rgb(44, 140, 121);
+  }
+
   body.light-mode .footer {
     background-color: rgba(116, 172, 0, 255);
     margin: 0;
@@ -511,10 +545,6 @@ body.dark-mode .sidebar select {
 
   body.dark-mode .watch-list {
     padding-top: 8vw;
-  }
-
-  .animalDetailWrapper {
-    margin-top: 0;
   }
 
   .animalWrapper {
@@ -1399,6 +1429,40 @@ body.dark-mode .sidebar select {
     position: fixed;
     right: 0;
     top: 0;
+  }
+
+  body.light-mode .animalDetailWrapper {
+    margin-top: 0;
+    background-color: #d7e8c0;
+    color: rgb(44, 140, 121);
+    border-radius: 5px;
+    width: 300px;
+    height: 580px;
+  }
+  .animalDetailWrapper img {
+    border-radius: 5px;
+    width: 200px;
+  }
+  .detail-button {
+    height: 30px;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    background-color: rgb(44, 140, 121);
+  }
+  .button-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+  }
+
+  .sightings-button {
+    width: 280px;
+    height: 50px;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    background-color: rgb(44, 140, 121);
   }
 }
 
