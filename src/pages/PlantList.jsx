@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function PlantList({ plants }) {
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+    setSearch(searchValue);
+  };
+
+  let filteredPlants = plants.filter((plant) => {
+    const nameMatch = plant.name.toLowerCase().includes(search.toLowerCase());
+    return nameMatch;
+  });
+
   return (
     <>
+      <input
+        className="search-bar"
+        type="text"
+        value={search}
+        onChange={handleChange}
+      />
       <div className="animalWrapper">
-        {plants.map((plant) => {
+        {filteredPlants.map((plant) => {
           return (
             <Link to={`/plant-list/${plant.id}`}>
               <div className="animal-cards" key={plant.id}>

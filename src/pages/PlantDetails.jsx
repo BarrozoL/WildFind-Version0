@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getPlant } from "../../lib";
 
 export default function PlantDetails() {
   const [foundPlant, setFoundPlant] = useState();
   const { plantId } = useParams();
+  const navigate = useNavigate();
+
+  const handleNewSighting = () => {
+    navigate(`/${plantId}/add-plant-sighting`);
+  };
 
   useEffect(() => {
     getPlant(plantId).then((data) => {
-      console.log("Fetched plant data:", data, plantId);
       setFoundPlant(data);
     });
   }, [plantId]);
@@ -23,6 +27,7 @@ export default function PlantDetails() {
       <p>{foundPlant.description}</p>
       <p>Native to {foundPlant.location}</p>
       <p>{foundPlant.edible}</p>
+      <button onClick={handleNewSighting}>Add a sighting</button>
     </div>
   );
 }
