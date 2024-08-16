@@ -16,7 +16,7 @@ export default function PlantDetails() {
   if (!foundPlant) return <p>Loading...</p>;
 
   return (
-    <div className="animalDetailWrapper" key={foundPlant.id}>
+    <div className="plantDetailWrapper" key={foundPlant.id}>
       {console.log(foundPlant)}
       <h3>{foundPlant.name}</h3>
       <img width="300px" src={foundPlant.image} />
