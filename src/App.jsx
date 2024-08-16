@@ -17,6 +17,7 @@ import AddSighting from "./pages/AddSighting";
 import EditWatchPage from "./pages/EditWatch";
 import AddAnimal from "./pages/AddAnimal";
 import MapPage from "./pages/MapPage";
+import AddPlantSighting from "./pages/AddPlantSighting";
 
 // Components
 import WatchCard from "./components/WatchCard";
@@ -33,6 +34,8 @@ import {
   getSightings,
   getAnimalsWithSightings,
   getAllPlants,
+  addPlantSighting,
+  getPlantsWithSightings,
 } from "../lib";
 import PlantList from "./pages/PlantList";
 import PlantDetails from "./pages/PlantDetails";
@@ -120,6 +123,12 @@ function App() {
     );
   };
 
+  const newPlantSighting = (sighting) => {
+    addPlantSighting(sighting).then((newSight) =>
+      setSightings([...sightings, newSight])
+    );
+  };
+
   return (
     <Router>
       <Navbar />
@@ -130,6 +139,17 @@ function App() {
           path="/:animalId/add-sighting"
           element={<AddSighting animals={animals} addSighting={newSighting} />}
         />
+
+        <Route
+          path="/:plantId/add-plant-sighting"
+          element={
+            <AddPlantSighting
+              plants={plants}
+              addPlantSighting={newPlantSighting}
+            />
+          }
+        />
+
         <Route
           path={`/animal-list/:animalId`}
           element={<AnimalCard watchState={watchState} />}
@@ -165,6 +185,8 @@ function App() {
           path={"/map"}
           element={
             <MapPage
+              plants={plants}
+              getPlantsWithSightings={getPlantsWithSightings}
               getAnimalsWithSightings={getAnimalsWithSightings}
               sightings={sightings}
               animals={animals}

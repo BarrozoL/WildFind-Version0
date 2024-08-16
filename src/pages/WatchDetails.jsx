@@ -33,36 +33,50 @@ function WatchDetails() {
     navigate("/watch");
   };
 
-  useEffect(() => {
-    getWatch(watchId)
-      .then((data) => {
-        console.log("Fetched watch:", data);
-        setFoundWatch(data);
-      })
-      .catch((error) => console.error("Error fetching watch:", error));
-  }, [watchId]);
-
   const handleEditNavigate = () => {
     navigate(`/watch/${watchId}/edit-watch`);
   };
 
   if (!foundWatch) return <p>Loading...</p>;
 
+  console.log(
+    foundWatch ? `location: ${foundWatch.location}` : "foundWatch is null"
+  );
+  console.log(
+    foundWatch ? `dangerLevel: ${foundWatch.dangerLevel}` : "foundWatch is null"
+  );
+  console.log(
+    foundWatch ? `description: ${foundWatch.description}` : "foundWatch is null"
+  );
+
   return (
-    <div className="watchDetailWrapper">
+    <div className="animalDetailWrapper">
       <div key={foundWatch.id}>
         <h3>{foundWatch.name}</h3>
         <img src={foundWatch.image} alt={foundWatch.name} width="300px" />
-        <p>{`Danger Level: ${foundWatch.dangerLevel}`}</p>
+        <p>Danger Level: {foundWatch.dangerLevel}</p>
         <p>{foundWatch.description}</p>
         <p>Native to {foundWatch.location}</p>
-        <button className="editWatch-btn" onClick={handleEditNavigate}>
-          Edit
-        </button>
-        <button onClick={handleNavigate}>Back</button>
+        <div className="button-details-watch">
+          <button className="watch-detail-button" onClick={handleEditNavigate}>
+            Edit
+          </button>
+          <button className="watch-detail-button" onClick={handleNavigate}>
+            Back
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 export default WatchDetails;
+
+/*
+note:
+.location is printing danger level, .dangerLevel is printing description, and .description is printing location. 
+Also .description prints "native to ..." so if I do <p>Native to: {foundWatch.description}</p> it returns Native to: Native to ...
+I noticed in AnimalCard.jsx it was exporting `Native to ${foundAnimal.location}, but I fixed this and still have this issue
+I have been trying to fix it and I am tired and stuck.
+Will go back to fix. 
+*/

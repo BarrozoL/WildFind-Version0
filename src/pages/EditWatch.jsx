@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
-
-// const API_URL = "https://wildfind-backendserver.adaptable.app/watch";
 
 function EditWatchPage({ editWatch, watches }) {
   const { watchId } = useParams();
@@ -41,11 +38,25 @@ function EditWatchPage({ editWatch, watches }) {
     navigate("/watch");
   };
 
+  // Use useEffect to add/remove the 'other-theme' class
+  useEffect(() => {
+    if (foundWatch.typeId === 8) {
+      document.body.classList.add("other-theme");
+    } else {
+      document.body.classList.remove("other-theme");
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.classList.remove("other-theme");
+    };
+  }, [foundWatch.typeId]);
+
   return (
-    <div>
+    <div className="add-form">
       <h3>Edit Watch Item</h3>
 
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="edit-inputs">
         <label>Name:</label>
         <input
           type="text"

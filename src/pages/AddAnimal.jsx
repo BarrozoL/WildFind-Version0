@@ -118,8 +118,8 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
     const newAnimal = {
       typeId: animalTypeId,
       name,
-      image: img,
       dangerLevel: danger,
+      image: img,
       description,
       location,
     };
@@ -155,6 +155,10 @@ export default function AddAnimal({ types, addAnimal, animals, animalState }) {
             <option value="bird">Bird</option>
             <option value="mammal">Mammal</option>
             <option value="reptile">Reptile</option>
+            <option value="insect">Insect</option>
+            <option value="amphibian">Amphibian</option>
+            <option value="aquatic">Aquatic Animal</option>
+            <option value="pet">Pet</option>
             <option value="other">Other</option>
           </select>
         </div>

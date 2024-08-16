@@ -48,7 +48,7 @@ export default function AnimalCard({ watchState }) {
         foundAnimal.name,
         foundAnimal.image,
         foundAnimal.description,
-        `Native to ${foundAnimal.location}`,
+        foundAnimal.location,
         foundAnimal.dangerLevel
       );
       watchState(response);
@@ -71,15 +71,15 @@ export default function AnimalCard({ watchState }) {
         <p>{foundAnimal.description}</p>
         <p>Native to {foundAnimal.location}</p>
         <div className="button-details">
-          <button onClick={handleAddToWatchList} className="detail-button">
-            Add to Watch List
-          </button>
           <button onClick={handleSightingNavigate} className="sightings-button">
             Click to view locations where the {`${foundAnimal.name}`} has been
             seen
           </button>
           <button onClick={handleNewSighting} className="detail-button">
             Add a sighting
+          </button>
+          <button onClick={handleAddToWatchList} className="detail-button">
+            Add to Watch List
           </button>
           <button onClick={handleNavigate} className="detail-button">
             Back

@@ -198,6 +198,14 @@ body.light-mode .add-inputs select {
   background-color: white;
   border-color: rgb(44, 140, 121);
   border-radius: 5px;
+  color: black;
+}
+body.light-mode .add-inputs textarea {
+  background-color: white;
+  border-color: rgb(44, 140, 121);
+  border-width: 1px;
+  border-radius: 5px;
+  color: black;
 }
 
 body.dark-mode .add-form {
@@ -211,6 +219,11 @@ body.dark-mode .add-inputs input {
   border-radius: 5px;
 }
 body.dark-mode .add-inputs select {
+  border-radius: 5px;
+}
+body.light-mode .add-inputs textarea {
+  border-color: rgb(44, 140, 121);
+  border-width: 1px;
   border-radius: 5px;
 }
 
@@ -241,6 +254,7 @@ body.light-mode .sighting-inputs select {
   background-color: white;
   border-color: rgb(44, 140, 121);
   border-radius: 5px;
+  color: black;
 }
 
 body.dark-mode .sighting-form {
@@ -1221,6 +1235,9 @@ body.dark-mode .sidebar select {
     padding: 20px;
     margin-top: 50px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .add-submit {
@@ -1411,6 +1428,9 @@ body.dark-mode .sidebar select {
 
   .animalDetailWrapper {
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .animalWrapper {
@@ -1433,37 +1453,266 @@ body.dark-mode .sidebar select {
 
   body.light-mode .animalDetailWrapper {
     margin-top: 0;
+    padding-top: 10px;
     background-color: #d7e8c0;
     color: rgb(44, 140, 121);
     border-radius: 5px;
-    width: 300px;
-    height: 580px;
+    width: 1100px;
+    height: 600px;
   }
   .animalDetailWrapper img {
     border-radius: 5px;
-    width: 200px;
+    width: 300px;
   }
-  .detail-button {
-    height: 30px;
-    font-size: 0.8rem;
+  body.light-mode .detail-button {
+    height: 38px;
     margin-bottom: 3px;
     background-color: rgb(44, 140, 121);
   }
   .button-details {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100px;
   }
 
-  .sightings-button {
+  body.light-mode .sightings-button {
     width: 280px;
-    height: 50px;
-    font-size: 0.8rem;
+    height: 72px;
     margin-bottom: 3px;
     background-color: rgb(44, 140, 121);
   }
+  body.dark-mode .animalDetailWrapper {
+    margin-top: 0;
+    padding-top: 10px;
+    background-color: #b581e4;
+    color: #b5fff0;
+    border-radius: 5px;
+    width: 1100px;
+    height: 600px;
+  }
+
+  body.dark-mode .detail-button {
+    height: 38px;
+    margin-bottom: 3px;
+    background-color: black;
+  }
+  .button-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+  }
+
+  body.dark-mode .sightings-button {
+    width: 280px;
+    height: 72px;
+    margin-bottom: 3px;
+    background-color: black;
+  }
+
+  body.other-theme .animalDetailWrapper {
+    margin-top: 0;
+    padding-top: 10px;
+    background-color: #1c8e66;
+    color: #b5fff0;
+    border-radius: 5px;
+    width: 1100px;
+    height: 600px;
+  }
+
+  body.other-theme .animalDetailWrapper img {
+    border: 2px solid #20c9c1;
+  }
+
+  body.other-theme .detail-button {
+    height: 38px;
+    margin-bottom: 3px;
+    border: 2px solid #20c9c1;
+  }
+  .button-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+  }
+
+  body.other-theme .sightings-button {
+    width: 280px;
+    height: 72px;
+    margin-bottom: 3px;
+    border: 2px solid #20c9c1;
+  }
+
+  .sighting-cards img {
+    border-radius: 10px;
+  }
+  body.light-mode .sighting-cards {
+    margin-top: 0;
+    padding-top: 20px;
+    background-color: #d7e8c0;
+    color: rgb(44, 140, 121);
+    border-radius: 5px;
+    width: 900px;
+  }
+  body.dark-mode .sighting-cards {
+    margin-top: 0;
+    padding-top: 20px;
+    background-color: #b581e4;
+    color: #b5fff0;
+    border-radius: 5px;
+    width: 900px;
+  }
+  body.other-theme .sighting-cards {
+    margin-top: 0;
+    padding-top: 20px;
+    background-color: #1c8e66;
+    color: #b5fff0;
+    border-radius: 5px;
+    width: 900px;
+  }
+  .button-details-watch {
+    height: 100px;
+    width: 100%;
+  }
+  .button-details-watch button {
+    margin: 0 20px 0 20px;
+  }
+
+  body.light-mode .watch-detail-button {
+    height: 38px;
+    margin: 0 20px 3px 20px;
+    background-color: rgb(44, 140, 121);
+  }
+  body.dark-mode .watch-detail-button {
+    height: 38px;
+    margin: 0 20px 3px 20px;
+    background-color: black;
+  }
+  body.other-theme .watch-detail-button {
+    height: 38px;
+    margin: 0 20px 3px 20px;
+    border: 2px solid #20c9c1;
+  }
+
+  body.light-mode .edit-inputs input {
+    background-color: white;
+    border-color: rgb(44, 140, 121);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+  }
+  body.light-mode .edit-inputs select {
+    background-color: white;
+    border-color: rgb(44, 140, 121);
+    border-radius: 5px;
+    color: black;
+  }
+  body.light-mode .edit-inputs textarea {
+    background-color: white;
+    border-color: rgb(44, 140, 121);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+  }
+
+  body.dark-mode .edit-inputs input {
+    border-color: rgb(44, 140, 121);
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  body.dark-mode .edit-inputs select {
+    border-radius: 5px;
+  }
+  body.dark-mode .edit-inputs textarea {
+    border-color: rgb(44, 140, 121);
+    border-width: 1px;
+    border-radius: 5px;
+  }
+
+  body.other-theme .edit-inputs input {
+    border-color: rgb(44, 140, 121);
+    background-color: #3b3b3b;
+    color: white;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  body.other-theme .edit-inputs select {
+    border-radius: 5px;
+    background-color: #3b3b3b;
+    color: white;
+  }
+  body.other-theme .edit-inputs textarea {
+    border-color: rgb(44, 140, 121);
+    background-color: #3b3b3b;
+    color: white;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  body.other-theme .edit-inputs button {
+    background-color: black;
+    border: 2px solid #20c9c1;
+  }
+
+  body.other-theme .add-form {
+    background-color: #1c8e66;
+    color: #b5fff0;
+  }
+  .edit-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+  }
+
+  .edit-inputs button {
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 38%;
+  }
+
+  body.light-mode .plantDetailWrapper {
+    margin-top: 0;
+    padding-top: 10px;
+    background-color: #d7e8c0;
+    color: rgb(44, 140, 121);
+    border-radius: 5px;
+    width: 1100px;
+    height: 600px;
+  }
+  .plantDetailWrapper img {
+    border-radius: 5px;
+    width: 300px;
+  }
+  body.dark-mode .plantDetailWrapper {
+    margin-top: 0;
+    padding-top: 10px;
+    background-color: #b581e4;
+    color: #b5fff0;
+    border-radius: 5px;
+    width: 1100px;
+    height: 600px;
+  }
+}
+
+.spottingWrapper {
+  padding-top: 5vw;
+  padding-bottom: 1vw;
+}
+body.light-mode .spottingWrapper button {
+  background-color: rgb(44, 140, 121);
+  border-color: rgb(44, 140, 121);
+}
+
+body.dark-mode .spottingWrapper button {
+  background-color: rgb(44, 140, 121);
+  border-color: rgb(44, 140, 121);
+}
+body.other-theme .spottingWrapper button {
+  background-color: black;
+  border: 2px solid rgb(44, 140, 121);
 }
 
 body.other-theme {
