@@ -14,9 +14,9 @@ function WatchCard({ watch, deleteWatch }) {
         <Link to={`/watch/${watch.id}/details`}>
           <h3>{watch.name}</h3>
           <img
-            width="180px"
             src={watch.image}
-            style={{ borderRadius: "10px" }}
+            alt={watch.name}
+            style={{ width: "180px", maxHeight: "145px", borderRadius: "10px" }}
           />
         </Link>
         {/* <br /> */}
