@@ -1451,6 +1451,13 @@ body.dark-mode .sidebar select {
     top: 0;
   }
 
+  .animalDetailWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   body.light-mode .animalDetailWrapper {
     margin-top: 0;
     padding-top: 10px;
