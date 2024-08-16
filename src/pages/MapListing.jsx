@@ -37,7 +37,16 @@ export default function MapListing({
           ))}
         </div>
         <div>
-          <div style={{ position: "absolute", top: "60%" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: "60%",
+              width: "400px",
+              display: "flex",
+              flexWrap: "wrap",
+              width: "550px",
+            }}
+          >
             {plantsArray.map((plant) => (
               <Link to={`/plant-list/${plant.id}`} key={plant.id}>
                 <div>
