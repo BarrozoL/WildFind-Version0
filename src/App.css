@@ -418,6 +418,8 @@ body.dark-mode .sidebar select {
     font-size: 0.8rem;
     margin-bottom: 3px;
     background-color: rgb(44, 140, 121);
+    padding: 20px;
+    margin: 20px;
   }
   .button-details {
     display: flex;
@@ -425,14 +427,18 @@ body.dark-mode .sidebar select {
     align-items: center;
     justify-content: space-between;
     height: 100px;
+    width: 1000px;
+    padding: 20px;
   }
 
   .sightings-button {
-    width: 280px;
+    width: 1000px;
     height: 50px;
     font-size: 0.8rem;
     margin-bottom: 3px;
     background-color: rgb(44, 140, 121);
+    display: flex;
+    justify-content: space-between;
   }
 
   body.light-mode .footer {
