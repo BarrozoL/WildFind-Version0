@@ -47,6 +47,8 @@ function App() {
   const [sightings, setSightings] = useState([""]);
   const [plants, setPlants] = useState([]);
 
+  // document.title = "WildFind";
+
   useEffect(() => {
     getAllPlants().then((data) => setPlants(data));
   }, []);
